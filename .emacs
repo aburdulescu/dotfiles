@@ -69,6 +69,10 @@
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
+;; config ido
+(require 'ido)
+(ido-mode t)
+
 ;; Configs for cmake-ide
 
 ;; rtags config
