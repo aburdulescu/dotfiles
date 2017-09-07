@@ -17,8 +17,11 @@
  '(column-number-mode t)
  '(custom-enabled-themes (quote (tango-dark)))
  '(font-use-system-font t)
+ '(ido-enable-flex-matching t)
  '(inhibit-startup-screen t)
- '(show-paren-mode t))
+ '(menu-bar-mode nil)
+ '(show-paren-mode t)
+ '(uniquify-buffer-name-style (quote post-forward) nil (uniquify)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
