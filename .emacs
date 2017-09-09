@@ -24,6 +24,7 @@
  '(inhibit-startup-screen t)
  '(menu-bar-mode nil)
  '(show-paren-mode t)
+ '(tool-bar-mode nil)
  '(uniquify-buffer-name-style (quote post-forward) nil (uniquify)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
