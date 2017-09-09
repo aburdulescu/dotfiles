@@ -16,6 +16,9 @@
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
  '(custom-enabled-themes (quote (tango-dark)))
+ '(custom-safe-themes
+   (quote
+    ("b04425cc726711a6c91e8ebc20cf5a3927160681941e06bc7900a5a5bfe1a77f" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" default)))
  '(font-use-system-font t)
  '(ido-enable-flex-matching t)
  '(inhibit-startup-screen t)
@@ -64,9 +67,9 @@
 ;(add-hook 'c++-mode-hook 'flycheck-mode)
 ;(add-hook 'c-mode-hook 'flycheck-mode)
 
-;; config powerline
-(require 'powerline)
-(powerline-center-theme)
+;; config smart-mode line
+(setq sml/theme 'dark)
+(sml/setup)
 
 ;; windmove
 (when (fboundp 'windmove-default-keybindings)
@@ -75,6 +78,9 @@
 ;; config ido
 (require 'ido)
 (ido-mode t)
+
+;; bind magit-status to C-x g
+(global-set-key (kbd "C-x g") 'magit-status)
 
 ;; Configs for cmake-ide
 
