@@ -121,3 +121,8 @@
 ;(global-set-key (kbd "C-x b") #'helm-buffers-list)
 ;(global-set-key (kbd "C-x k") #'helm-buffers-list)
 (helm-mode 1)
+
+;; org-mode
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
