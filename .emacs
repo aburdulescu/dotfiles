@@ -18,12 +18,13 @@
  '(custom-enabled-themes (quote (tango-dark)))
  '(custom-safe-themes
    (quote
-    ("b04425cc726711a6c91e8ebc20cf5a3927160681941e06bc7900a5a5bfe1a77f" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" default)))
+    ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
  '(font-use-system-font t)
  '(ido-enable-flex-matching t)
  '(inhibit-startup-screen t)
+ '(menu-bar-mode t)
  '(show-paren-mode t)
- '(tool-bar-mode nil)
+ '(tool-bar-mode t)
  '(uniquify-buffer-name-style (quote post-forward) nil (uniquify)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -44,7 +45,6 @@
 (ac-config-default)
 (global-auto-complete-mode t)
 
-
 ;;config Yasnippet
 (require 'yasnippet)
 (yas-global-mode 1)
@@ -58,14 +58,14 @@
 
 ;; switch between header and source
 (add-hook 'c-mode-common-hook
-  (lambda() 
-    (local-set-key  (kbd "C-c o") 'ff-find-other-file)))
+          (lambda() 
+            (local-set-key  (kbd "C-c o") 'ff-find-other-file)))
 
 ;; config flycheck
 (global-flycheck-mode)
 (add-hook 'after-init-hook #'global-flycheck-mode)
-;(add-hook 'c++-mode-hook 'flycheck-mode)
-;(add-hook 'c-mode-hook 'flycheck-mode)
+                                        ;(add-hook 'c++-mode-hook 'flycheck-mode)
+                                        ;(add-hook 'c-mode-hook 'flycheck-mode)
 
 ;; config smart-mode line
 (setq sml/theme 'dark)
@@ -82,22 +82,7 @@
 ;; bind magit-status to C-x g
 (global-set-key (kbd "C-x g") 'magit-status)
 
-;; Configs for cmake-ide
-
-;; rtags config
-;(require 'rtags)
-;(require 'company-rtags)
-
-;(setq rtags-completions-enabled t)
-;(eval-after-load 'company
-;  '(add-to-list
-;    'company-backends 'company-rtags))
-;(setq rtags-autostart-diagnostics t)
-;(rtags-enable-standard-keybindings)
-
-
-
-;(require 'setup-ggtags)
+                                        ;(require 'setup-ggtags)
 (require 'ggtags)
 (add-hook 'c-mode-common-hook
           (lambda ()
@@ -117,8 +102,8 @@
 (global-set-key (kbd "M-x") #'helm-M-x)
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
 (global-set-key (kbd "C-x C-b") #'helm-buffers-list)
-;(global-set-key (kbd "C-x b") #'helm-buffers-list)
-;(global-set-key (kbd "C-x k") #'helm-buffers-list)
+                                        ;(global-set-key (kbd "C-x b") #'helm-buffers-list)
+                                        ;(global-set-key (kbd "C-x k") #'helm-buffers-list)
 (helm-mode 1)
 
 ;; org-mode
@@ -144,27 +129,27 @@
 
 ;; go-mode settings
 (defun my-go-mode-hook ()
-  ; Use goimports instead of go-fmt
+                                        ; Use goimports instead of go-fmt
   (setq gofmt-command "goimports")
-  ; Call Gofmt before saving
+                                        ; Call Gofmt before saving
   (add-hook 'before-save-hook 'gofmt-before-save)
-  ; Customize compile command to run go build
+                                        ; Customize compile command to run go build
   (if (not (string-match "go" compile-command))
       (set (make-local-variable 'compile-command)
            "go build -v && go test -v && go vet"))
-  ; Godef jump key binding
+                                        ; Godef jump key binding
   (local-set-key (kbd "M-.") 'godef-jump)
   (local-set-key (kbd "M-*") 'pop-tag-mark)
-)
+  )
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
 ;; go-autocomplete
 (defun auto-complete-for-go ()
-(auto-complete-mode 1))
- (add-hook 'go-mode-hook 'auto-complete-for-go)
+  (auto-complete-mode 1))
+(add-hook 'go-mode-hook 'auto-complete-for-go)
 
 (with-eval-after-load 'go-mode
-   (require 'go-autocomplete))
+  (require 'go-autocomplete))
 
 (require 'evil)
 (evil-mode 1)
