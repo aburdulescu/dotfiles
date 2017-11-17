@@ -1,4 +1,4 @@
-(provide 'my_config)
+(provide 'all-cfgs)
 
 (require 'cstyle-cfg)
 (require 'autocomplete-cfg)
