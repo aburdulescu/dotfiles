@@ -11,3 +11,4 @@
 (show-paren-mode 1)
 (linum-mode 1)
 
+(global-set-key (kbd "M-i") 'helm-imenu)
