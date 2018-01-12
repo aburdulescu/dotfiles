@@ -13,3 +13,10 @@
 
 ;; show colum number
 (setq column-number-mode t)
+
+;; set c-style
+;;config C Style and tab
+(setq-default c-basic-offset 2
+			  tab-width 2
+			  indent-tabs-mode nil)
+(setq c-default-style "k&r")
