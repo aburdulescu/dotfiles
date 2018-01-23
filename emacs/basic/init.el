@@ -5,9 +5,6 @@
 ;;activate show-paren-mode
 (show-paren-mode t)
 
-;; bind imenu to M-i
-(global-set-key (kbd "M-i") 'imenu)
-
 ;;windmove config(change windows with shift)
 (when (fboundp 'windmove-default-keybindings) (windmove-default-keybindings))
 
@@ -20,3 +17,6 @@
 			  tab-width 2
 			  indent-tabs-mode nil)
 (setq c-default-style "k&r")
+
+(add-to-list 'load-path "~/repos/configs/emacs/basic")
+(require 'ido-goto-symbol)
