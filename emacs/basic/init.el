@@ -1,3 +1,8 @@
+(require 'package)
+
+(add-to-list 'package-archives '("MELPA Stable" . "https://stable.melpa.org/packages/") t)
+(package-initialize)
+
 ;;activate ido-mode
 (require 'ido)
 (ido-mode t)
