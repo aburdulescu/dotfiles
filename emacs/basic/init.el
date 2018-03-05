@@ -18,10 +18,10 @@
 
 ;; set c-style
 ;;config C Style and tab
-(setq-default c-basic-offset 2
-			  tab-width 2
+(setq-default c-basic-offset 4
+			  tab-width 4
 			  indent-tabs-mode nil)
 (setq c-default-style "k&r")
 
-(add-to-list 'load-path "~/repos/configs/emacs/basic")
+(add-to-list 'load-path "~/projects/dotfiles/emacs/basic")
 (require 'ido-goto-symbol)
