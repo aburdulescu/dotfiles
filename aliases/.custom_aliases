@@ -1,0 +1,11 @@
+# emacs
+alias em='emacs -nw'
+alias emg='emacs &'
+alias emc='emacsclient'
+
+# git
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'
+alias gpl='git pull'
+alias gph='git push'
