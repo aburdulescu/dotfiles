@@ -9,3 +9,9 @@ alias ga='git add'
 alias gc='git commit'
 alias gpl='git pull'
 alias gph='git push'
+
+# tmux
+alias tnew='tmux new -s'
+alias tattach='tmux attach -t'
+alias tsesskill='tmux kill-session -t'
+alias tls='tmux ls'
