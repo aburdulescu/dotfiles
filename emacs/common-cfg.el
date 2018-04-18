@@ -1,12 +1,8 @@
-(require 'package)
+;;; package --- Summary
+;;; Commentary:
+;;; Code:
 
-;; add MELPA
-(add-to-list 'package-archives '("MELPA Stable" . "https://stable.melpa.org/packages/") t)
-(package-initialize)
-
-;; activate ido-mode
-(require 'ido)
-(ido-mode t)
+(provide 'common-cfg)
 
 ;; highlight matching paranthesis
 (show-paren-mode t)
@@ -22,11 +18,6 @@
 ;; set C default style
 (setq c-default-style "k&r")
 
-;; add ido-goto-symbol function and bound it to M-i
-(add-to-list 'load-path "~/projects/dotfiles/emacs/basic")
-(require 'ido-goto-symbol)
-(global-set-key (kbd "M-i") 'ido-goto-symbol)
-
 ;; use 'y-or-n' prompt
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -38,3 +29,5 @@
       inhibit-splash-screen t
       confirm-kill-emacs 'yes-or-no-p
       column-number-mode t)
+
+;;; common-cfg.el ends here

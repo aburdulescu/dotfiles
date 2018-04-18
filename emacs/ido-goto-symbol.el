@@ -1,3 +1,7 @@
+;;; package --- Summary
+;;; Commentary:
+;;; Code:
+
 (provide 'ido-goto-symbol)
 
 (defun ido-goto-symbol (&optional symbol-list)
@@ -46,5 +50,6 @@
             (unless (or (null position) (null name)
                         (string= (car imenu--rescan-item) name))
               (add-to-list 'symbol-names name)
-              (add-to-list 'name-and-pos (cons name position))))))))    
+              (add-to-list 'name-and-pos (cons name position))))))))
 
+;;; ido-goto-symbol.el ends here
