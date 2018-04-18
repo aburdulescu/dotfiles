@@ -4,8 +4,6 @@
 
 (provide 'standard-cfg)
 
-(add-to-list 'load-path "~/projects/dotfiles/emacs")
-
 (require 'package)
 
 ;; add MELPA

@@ -4,7 +4,6 @@
 
 (provide 'offline-cfg)
 
-(add-to-list 'load-path "~/projects/dotfiles/emacs")
 (require 'common-cfg)
 
 ;; activate ido-mode

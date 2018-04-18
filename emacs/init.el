@@ -1,9 +1,3 @@
-;; uncomment the wanted configuration: offline-cfg or standard-cfg
-
-;; ==============offline config(for hosts that can't connect to the internet)==============
-
+(add-to-list 'load-path "~/projects/dotfiles/emacs")
 ;; (require 'offline-cfg)
-
-;; ==============standard config===========================================================
-
 ;; (require 'standard-cfg)
