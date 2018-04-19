@@ -24,8 +24,6 @@
 ;; ensure = make sure is installed
 (setq-default use-package-always-ensure t)
 
-(ido-mode t)
-
 (use-package auto-complete
   :init
   (ac-config-default)
@@ -46,5 +44,14 @@
 (use-package yasnippet
   :init
   (yas-global-mode 1))
+
+(use-package ido-vertical-mode
+  :init
+  (ido-vertical-mode 1)
+  (setq ido-vertical-define-keys 'C-n-C-p-up-down-left-right))
+
+(use-package ido-completing-read+
+  :init
+  (ido-ubiquitous-mode 1))
 
 ;;; standard-cfg.el ends here

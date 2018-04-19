@@ -7,9 +7,6 @@
 ;; highlight matching paranthesis
 (show-paren-mode t)
 
-;; change windows with shift
-(when (fboundp 'windmove-default-keybindings) (windmove-default-keybindings))
-
 ;; set indent type and size
 (setq-default c-basic-offset 4
 			  tab-width 4
@@ -29,5 +26,15 @@
       inhibit-splash-screen t
       confirm-kill-emacs 'yes-or-no-p
       column-number-mode t)
+
+;; activate ido and ido-everywhere
+(ido-mode t)
+(ido-everywhere t)
+
+;; undo/redo windows changes with C-c arrow
+(winner-mode 1)
+
+;; change windows with shift-arrow
+(windmove-default-keybindings)
 
 ;;; common-cfg.el ends here
