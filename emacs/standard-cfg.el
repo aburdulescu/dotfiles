@@ -54,4 +54,10 @@
   :init
   (ido-ubiquitous-mode 1))
 
+(use-package dockerfile-mode)
+(use-package cmake-mode)
+
+;; bind M-i to imenu
+(global-set-key (kbd "M-i") 'imenu)
+
 ;;; standard-cfg.el ends here
