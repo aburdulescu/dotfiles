@@ -6,10 +6,6 @@
 
 (require 'common-cfg)
 
-;; activate ido-mode
-(require 'ido)
-(ido-mode t)
-
 ;; add ido-goto-symbol function and bound it to M-i
 (require 'ido-goto-symbol)
 (global-set-key (kbd "M-i") 'ido-goto-symbol)
