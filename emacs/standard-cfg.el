@@ -60,4 +60,8 @@
 ;; bind M-i to imenu
 (global-set-key (kbd "M-i") 'imenu)
 
+(use-package elpy
+  :init
+  (elpy-enable))
+
 ;;; standard-cfg.el ends here
