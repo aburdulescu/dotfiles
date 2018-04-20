@@ -15,3 +15,7 @@ alias tnew='tmux new -s'
 alias tattach='tmux attach -t'
 alias tsesskill='tmux kill-session -t'
 alias tls='tmux ls'
+
+# sshfs
+alias sshfs_m='~/projects/dotfiles/scripts/sshfs_mnt.sh'
+alias sshfs_u='~/projects/dotfiles/scripts/sshfs_umnt.sh'
