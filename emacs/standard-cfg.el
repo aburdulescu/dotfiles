@@ -56,6 +56,7 @@
 
 (use-package dockerfile-mode)
 (use-package cmake-mode)
+(use-package markdown-mode)
 
 ;; bind M-i to imenu
 (global-set-key (kbd "M-i") 'imenu)
