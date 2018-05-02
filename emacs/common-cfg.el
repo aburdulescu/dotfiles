@@ -24,7 +24,7 @@
 ;; show column number
 (setq make-backup-files nil
       inhibit-splash-screen t
-      confirm-kill-emacs 'yes-or-no-p
+      ;; confirm-kill-emacs 'yes-or-no-p
       column-number-mode t)
 
 ;; activate ido and ido-everywhere
