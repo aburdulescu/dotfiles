@@ -29,12 +29,14 @@
 
 ;; activate ido and ido-everywhere
 (ido-mode t)
-(ido-everywhere t)
 
 ;; undo/redo windows changes with C-c arrow
 (winner-mode 1)
 
 ;; change windows with shift-arrow
 (windmove-default-keybindings)
+
+(require 'ido-goto-symbol)
+(global-set-key (kbd "M-i") 'ido-goto-symbol)
 
 ;;; common-cfg.el ends here

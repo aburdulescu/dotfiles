@@ -50,16 +50,9 @@
   (ido-vertical-mode 1)
   (setq ido-vertical-define-keys 'C-n-C-p-up-down-left-right))
 
-;; (use-package ido-completing-read+
-;;   :init
-;;   (ido-ubiquitous-mode 1))
-
 (use-package dockerfile-mode)
 (use-package cmake-mode)
 (use-package markdown-mode)
-
-;; bind M-i to imenu
-(global-set-key (kbd "M-i") 'imenu)
 
 ;; (use-package elpy
 ;;   :init
