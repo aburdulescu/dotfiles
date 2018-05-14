@@ -7,14 +7,16 @@ alias emc='emacsclient'
 alias gs='git status'
 alias ga='git add'
 alias gc='git commit'
+alias gd='git diff'
+alias gmv='git mv'
 alias gpl='git pull'
 alias gph='git push'
 
 # tmux
-alias tnew='tmux new -s'
-alias tattach='tmux attach -t'
-alias tsesskill='tmux kill-session -t'
-alias tls='tmux ls'
+alias tmuxn='tmux new -s'
+alias tmuxa='tmux attach -t'
+alias tmuxks='tmux kill-session -t'
+alias tmuxls='tmux ls'
 
 # sshfs
 alias sshfs_m='~/projects/dotfiles/scripts/sshfs_mnt.sh'
