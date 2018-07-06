@@ -6,8 +6,7 @@
 
 (require 'package)
 
-;; add MELPA
-(add-to-list 'package-archives '("MELPA Stable" . "https://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
 
 (package-initialize)
 
@@ -29,21 +28,17 @@
   (ac-config-default)
   (global-auto-complete-mode t))
 
-(use-package magit
-  :bind
-  ("C-x g" . magit-status))
-
 (use-package flycheck
   :init
   (global-flycheck-mode))
 
+(use-package magit
+  :bind
+  ("C-x g" . magit-status))
+
 (use-package org-bullets
   :init
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
-
-(use-package yasnippet
-  :init
-  (yas-global-mode 1))
 
 (use-package ido-vertical-mode
   :init
