@@ -1,18 +1,12 @@
-;;; package --- Summary
-;;; Commentary:
-;;; Code:
-
-(provide 'standard-cfg)
-
+* Add MELPA
+#+BEGIN_SRC emacs-lisp
 (require 'package)
-
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
-
 (package-initialize)
+#+END_SRC
 
-(require 'common-cfg)
-
-;; install use-package if not installed
+* Install and configure use-package
+#+BEGIN_SRC emacs-lisp
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
@@ -22,35 +16,56 @@
 
 ;; ensure = make sure is installed
 (setq-default use-package-always-ensure t)
+#+END_SRC
 
+* auto-complete
+#+BEGIN_SRC emacs-lisp
 (use-package auto-complete
   :init
   (ac-config-default)
   (global-auto-complete-mode t))
+#+END_SRC
 
+* flycheck
+#+BEGIN_SRC emacs-lisp
 (use-package flycheck
   :init
   (global-flycheck-mode))
+#+END_SRC
 
+* magit
+#+BEGIN_SRC emacs-lisp
 (use-package magit
   :bind
   ("C-x g" . magit-status))
+#+END_SRC
 
+* org-bullets
+#+BEGIN_SRC emacs-lisp
 (use-package org-bullets
   :init
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+#+END_SRC
 
+* ido
+#+BEGIN_SRC emacs-lisp
 (use-package ido-vertical-mode
   :init
   (ido-vertical-mode 1)
   (setq ido-vertical-define-keys 'C-n-C-p-up-down-left-right))
+#+END_SRC
 
+* additional modes
+#+BEGIN_SRC emacs-lisp
 (use-package dockerfile-mode)
 (use-package cmake-mode)
 (use-package markdown-mode)
+#+END_SRC
 
+* elpy
+#+BEGIN_SRC emacs-lisp
 (use-package elpy
    :init
    (elpy-enable))
+#+END_SRC
 
-;;; standard-cfg.el ends here

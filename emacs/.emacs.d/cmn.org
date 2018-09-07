@@ -1,0 +1,57 @@
+* Basic configurations
+** highlight matching paranthesis
+#+BEGIN_SRC emacs-lisp
+ (show-paren-mode t)
+#+END_SRC
+
+** set indent type and size
+#+BEGIN_SRC emacs-lisp
+(setq-default c-basic-offset 4
+			   tab-width 4
+			   indent-tabs-mode nil)
+#+END_SRC
+
+** set C default style
+#+BEGIN_SRC emacs-lisp
+ (setq c-default-style "k&r")
+#+END_SRC
+
+** use 'y-or-n' prompt
+#+BEGIN_SRC emacs-lisp
+ (fset 'yes-or-no-p 'y-or-n-p)
+#+END_SRC
+
+** don't make backup files, don't show splash screen
+ ;; show column number
+#+BEGIN_SRC emacs-lisp
+ (setq make-backup-files nil
+       inhibit-splash-screen t)
+#+END_SRC
+
+** activate ido and ido-everywhere
+#+BEGIN_SRC emacs-lisp
+ (ido-mode t)
+#+END_SRC
+
+** undo/redo windows changes with C-c arrow
+#+BEGIN_SRC emacs-lisp
+ (winner-mode 1)
+#+END_SRC
+
+** change windows with shift-arrow
+#+BEGIN_SRC emacs-lisp
+ (windmove-default-keybindings)
+#+END_SRC
+
+** add custom ido-goto-symbol
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'load-path "~/.emacs.d/custom_packages")
+(require 'ido-goto-symbol)
+(global-set-key (kbd "M-i") 'ido-goto-symbol)
+#+END_SRC
+
+** show dot for dired in ido-mode
+#+BEGIN_SRC emacs-lisp
+ (setq ido-show-dot-for-dired t)
+#+END_SRC
+

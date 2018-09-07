@@ -39,4 +39,6 @@
 (require 'ido-goto-symbol)
 (global-set-key (kbd "M-i") 'ido-goto-symbol)
 
+(setq ido-show-dot-for-dired t)
+
 ;;; common-cfg.el ends here
