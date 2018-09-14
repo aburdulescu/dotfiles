@@ -1,0 +1,162 @@
+* Builtin packages
+** config functions
+**** open
+#+BEGIN_SRC emacs-lisp
+  (defun config-open()
+    (interactive)
+    (find-file "~/.emacs.d/config.org"))
+  (global-set-key (kbd "C-c o") 'config-open)
+#+END_SRC
+**** load
+#+BEGIN_SRC emacs-lisp
+  (defun config-load()
+    (interactive)
+    (org-babel-load-file (expand-file-name "~/.emacs.d/config.org")))
+  (global-set-key (kbd "C-c l") 'config-load)
+#+END_SRC
+** highlight matching paranthesis
+#+BEGIN_SRC emacs-lisp
+ (show-paren-mode t)
+#+END_SRC
+
+** set indent type and size
+#+BEGIN_SRC emacs-lisp
+(setq-default c-basic-offset 4
+			   tab-width 4
+			   indent-tabs-mode nil)
+#+END_SRC
+
+** set C default style
+#+BEGIN_SRC emacs-lisp
+ (setq c-default-style "k&r")
+#+END_SRC
+
+** use 'y-or-n' prompt
+#+BEGIN_SRC emacs-lisp
+ (fset 'yes-or-no-p 'y-or-n-p)
+#+END_SRC
+
+** don't make backup files, don't show splash screen
+ ;; show column number
+#+BEGIN_SRC emacs-lisp
+ (setq make-backup-files nil
+       inhibit-splash-screen t)
+#+END_SRC
+
+** activate ido and ido-everywhere
+#+BEGIN_SRC emacs-lisp
+(setq ido-show-dot-for-dired t)
+(setq ido-everywhere t)
+(ido-mode t)
+#+END_SRC
+
+** undo/redo windows changes with C-c arrow
+#+BEGIN_SRC emacs-lisp
+ (winner-mode 1)
+#+END_SRC
+
+** change windows with shift-arrow
+#+BEGIN_SRC emacs-lisp
+ (windmove-default-keybindings)
+#+END_SRC
+
+** add custom ido-goto-symbol
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'load-path "~/.emacs.d/custom_packages")
+(require 'ido-goto-symbol)
+(global-set-key (kbd "M-i") 'ido-goto-symbol)
+#+END_SRC
+
+** disable tool-bar
+#+BEGIN_SRC emacs-lisp
+ (tool-bar-mode -1)
+#+END_SRC
+** bind ibuffer to C-x C-b
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-x C-b") 'ibuffer)
+#+END_SRC
+* MELPA packages
+** Add MELPA
+#+BEGIN_SRC emacs-lisp
+(require 'package)
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
+(package-initialize)
+#+END_SRC
+
+** Install and configure use-package
+#+BEGIN_SRC emacs-lisp
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-when-compile
+  (require 'use-package))
+
+;; ensure = make sure is installed
+(setq-default use-package-always-ensure t)
+#+END_SRC
+
+** auto-complete
+#+BEGIN_SRC emacs-lisp
+(use-package auto-complete
+  :init
+  (ac-config-default)
+  (global-auto-complete-mode t))
+#+END_SRC
+
+** flycheck
+#+BEGIN_SRC emacs-lisp
+(use-package flycheck
+  :init
+  (global-flycheck-mode))
+#+END_SRC
+
+** magit
+#+BEGIN_SRC emacs-lisp
+(use-package magit
+  :bind
+  ("C-x g" . magit-status))
+#+END_SRC
+
+** org-bullets
+#+BEGIN_SRC emacs-lisp
+(use-package org-bullets
+  :init
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+#+END_SRC
+
+** ido
+#+BEGIN_SRC emacs-lisp
+(use-package ido-vertical-mode
+  :init
+  (ido-vertical-mode 1)
+  (setq ido-vertical-define-keys 'C-n-C-p-up-down-left-right))
+#+END_SRC
+
+** additional modes
+#+BEGIN_SRC emacs-lisp
+(use-package dockerfile-mode)
+(use-package cmake-mode)
+(use-package markdown-mode)
+#+END_SRC
+
+** elpy
+#+BEGIN_SRC emacs-lisp
+(use-package elpy
+   :init
+   (elpy-enable))
+#+END_SRC
+** which-key
+#+BEGIN_SRC emacs-lisp
+(use-package which-key
+   :init
+   (which-key-mode))
+#+END_SRC
+** smex
+#+BEGIN_SRC emacs-lisp
+  (use-package smex
+    :init
+    (smex-initialize)
+    :bind
+    ("M-x" . smex))
+#+END_SRC
