@@ -1,2 +1,8 @@
 # backup files
 *~
+
+#for emacs
+emacs/.emacs.d/ac-comphist.dat
+emacs/.emacs.d/config.el
+emacs/.emacs.d/elpa/
+emacs/.emacs.d/ido.last
