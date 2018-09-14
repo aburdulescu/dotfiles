@@ -2,7 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
-(provide 'common-cfg)
+(provide 'config)
 
 ;; highlight matching paranthesis
 (show-paren-mode t)
@@ -41,4 +41,4 @@
 
 (setq ido-show-dot-for-dired t)
 
-;;; common-cfg.el ends here
+;;; config.el ends here
