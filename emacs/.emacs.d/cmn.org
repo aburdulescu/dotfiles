@@ -56,3 +56,7 @@
 #+BEGIN_SRC emacs-lisp
  (tool-bar-mode -1)
 #+END_SRC
+** bind ibuffer to C-x C-b
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-x C-b") 'ibuffer)
+#+END_SRC
