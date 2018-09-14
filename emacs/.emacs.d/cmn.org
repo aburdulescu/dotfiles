@@ -30,7 +30,9 @@
 
 ** activate ido and ido-everywhere
 #+BEGIN_SRC emacs-lisp
- (ido-mode t)
+(setq ido-show-dot-for-dired t)
+(setq ido-everywhere t)
+(ido-mode t)
 #+END_SRC
 
 ** undo/redo windows changes with C-c arrow
@@ -50,10 +52,6 @@
 (global-set-key (kbd "M-i") 'ido-goto-symbol)
 #+END_SRC
 
-** show dot for dired in ido-mode
-#+BEGIN_SRC emacs-lisp
- (setq ido-show-dot-for-dired t)
-#+END_SRC
 ** disable tool-bar
 #+BEGIN_SRC emacs-lisp
  (tool-bar-mode -1)
