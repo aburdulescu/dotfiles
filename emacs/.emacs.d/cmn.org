@@ -54,4 +54,7 @@
 #+BEGIN_SRC emacs-lisp
  (setq ido-show-dot-for-dired t)
 #+END_SRC
-
+** disable tool-bar
+#+BEGIN_SRC emacs-lisp
+ (tool-bar-mode -1)
+#+END_SRC
