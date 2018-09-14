@@ -30,11 +30,11 @@ install_dotfiles()
 main()
 {
     install_packages
-    cleanup
+    [[ "$1" == "-f" ]] && cleanup
     install_dotfiles
 }
 
 
 set -e # stop on error
 set -x # print what's executed
-main
+main $@
