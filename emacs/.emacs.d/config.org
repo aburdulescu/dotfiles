@@ -160,3 +160,9 @@
     :bind
     ("M-x" . smex))
 #+END_SRC
+** auto-package-update
+#+BEGIN_SRC emacs-lisp
+  (use-package auto-package-update
+    :init
+    (auto-package-update-now))
+#+END_SRC
