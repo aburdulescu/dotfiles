@@ -164,5 +164,5 @@
 #+BEGIN_SRC emacs-lisp
   (use-package auto-package-update
     :init
-    (auto-package-update-now))
+    (auto-package-update-maybe))
 #+END_SRC
