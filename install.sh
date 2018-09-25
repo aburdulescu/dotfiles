@@ -5,7 +5,8 @@ cleanup()
     rm -rf ~/.emacs.d \
        ~/.bash_aliases \
        ~/.zsh_aliases \
-       ~/.tmux.conf
+       ~/.tmux.conf \
+       ~/.gitconfig
 }
 
 install_packages()
@@ -25,6 +26,7 @@ install_dotfiles()
     [[ "$SHELL" == "/usr/bin/zsh" ]] && stow zsh && echo ". ~/.zsh_aliases" >> ~/.zshrc
     [[ "$SHELL" == "/bin/bash" ]] && stow bash
     stow emacs
+    stow git
 }
 
 main()
