@@ -98,17 +98,17 @@
 
 ** auto-complete
 #+BEGIN_SRC emacs-lisp
-  ;; (use-package auto-complete
-  ;;   :init
-  ;;   (ac-config-default)
-  ;;   (global-auto-complete-mode t))
+(use-package auto-complete
+:init
+(ac-config-default)
+(global-auto-complete-mode t))
 #+END_SRC
 
 ** flycheck
 #+BEGIN_SRC emacs-lisp
-(use-package flycheck
-  :init
-  (global-flycheck-mode))
+  ;; (use-package flycheck
+  ;;   :init
+  ;;   (global-flycheck-mode))
 #+END_SRC
 
 ** magit
@@ -142,9 +142,9 @@
 
 ** elpy
 #+BEGIN_SRC emacs-lisp
-(use-package elpy
-   :init
-   (elpy-enable))
+  ;; (use-package elpy
+  ;;    :init
+  ;;    (elpy-enable))
 #+END_SRC
 ** which-key
 #+BEGIN_SRC emacs-lisp
