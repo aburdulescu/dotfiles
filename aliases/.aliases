@@ -6,7 +6,7 @@ alias emc='emacsclient'
 # git
 alias gst='git status'
 alias gadd='git add'
-alias gco='git commit'
+alias gci='git commit'
 alias gdi='git diff'
 alias gmv='git mv'
 alias gpl='git pull'
