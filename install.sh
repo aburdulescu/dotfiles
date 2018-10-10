@@ -11,8 +11,11 @@ cleanup()
 
 install_packages()
 {
-    sudo apt update
-    sudo apt install -y \
+	apt update
+	apt install -y sudo
+	adduser aburdulescu sudo
+    apt update
+    apt install -y \
          xorg \
          i3 \
          lightdm \
@@ -24,8 +27,15 @@ install_packages()
          python3 \
          python3-pip \
          python3-venv \
-         stow
-    sudo apt build-dep emacs     
+         stow \
+	     vim \
+	     gnome-terminal \
+	     chromium
+
+    apt build-dep -y emacs25
+
+    dpkg-reconfigure lightdm
+	m-a prepare
 }
 
 install_dotfiles()
@@ -54,7 +64,7 @@ main()
     echo 'sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"'
 
     echo -e "\n\tInstall emacs:"
-    echo "Download emacs source from ftp and install it!!"
+    echo "Download emacs source from a mirror and install it!!"
 }
 
 main $@
