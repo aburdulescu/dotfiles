@@ -30,7 +30,8 @@ install_packages()
          stow \
 	     vim \
 	     gnome-terminal \
-	     chromium
+	     chromium \
+         curl
 
     apt build-dep -y emacs25
 
