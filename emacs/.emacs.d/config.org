@@ -64,16 +64,54 @@
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'load-path "~/.emacs.d/custom_packages")
 (require 'ido-goto-symbol)
-(global-set-key (kbd "M-i") 'ido-goto-symbol)
+(global-set-key (kbd "C-c i") 'ido-goto-symbol)
 #+END_SRC
 
 ** disable tool-bar
 #+BEGIN_SRC emacs-lisp
  (tool-bar-mode -1)
 #+END_SRC
+** disable scroll-bar
+#+BEGIN_SRC emacs-lisp
+ (scroll-bar-mode -1)
+#+END_SRC
+** empty scratch buffer
+#+BEGIN_SRC emacs-lisp
+  (setq initial-scratch-message nil)
+#+END_SRC
 ** bind ibuffer to C-x C-b
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "C-x C-b") 'ibuffer)
+#+END_SRC
+** revert buffer
+#+BEGIN_SRC emacs-lisp
+  (define-key global-map (kbd "C-c C-d") 'revert-buffer)
+#+END_SRC
+** rgrep
+#+BEGIN_SRC emacs-lisp
+  (define-key global-map (kbd "C-c g") 'rgrep)
+#+END_SRC
+
+** disable the bell
+#+BEGIN_SRC emacs-lisp
+  (setq visible-bell 1)
+#+END_SRC
+** highlight current line
+#+BEGIN_SRC emacs-lisp
+  (when window-system
+    (global-hl-line-mode))
+#+END_SRC
+** add new line at the end of file
+#+BEGIN_SRC emacs-lisp
+  (setq require-final-newline t)
+#+END_SRC
+** Delete trailing white spaces on save
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+#+END_SRC
+** electric pair(add matching delimiter; i.e. open a '(' and this will open a matching ')')
+#+BEGIN_SRC emacs-lisp
+  (electric-pair-mode 1)
 #+END_SRC
 * MELPA packages
 ** Add MELPA
@@ -98,10 +136,10 @@
 
 ** auto-complete
 #+BEGIN_SRC emacs-lisp
-(use-package auto-complete
-:init
-(ac-config-default)
-(global-auto-complete-mode t))
+  ;; (use-package auto-complete
+  ;; :init
+  ;; (ac-config-default)
+  ;; (global-auto-complete-mode t))
 #+END_SRC
 
 ** flycheck
@@ -165,4 +203,74 @@
   (use-package auto-package-update
     :init
     (auto-package-update-maybe))
+#+END_SRC
+** ag
+#+BEGIN_SRC emacs-lisp
+  (use-package ag)
+#+END_SRC
+** projectile
+#+BEGIN_SRC emacs-lisp
+  ;; (use-package projectile
+  ;;   :config
+  ;;   (projectile-mode +1)
+  ;;   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  ;;   (setq projectile-indexing-method 'native))
+#+END_SRC
+** dracula theme
+#+BEGIN_SRC emacs-lisp
+  (use-package dracula-theme
+    :config (load-theme 'dracula t)
+    (set-face-background 'mode-line "#510370")
+    (set-face-background 'mode-line-inactive "black"))
+#+END_SRC
+** fonts
+#+BEGIN_SRC emacs-lisp
+  (if (condition-case nil
+          (x-list-fonts "Hack")
+        (error nil))
+      (progn
+        (add-to-list 'default-frame-alist '(font . "Hack-10"))
+        (set-face-attribute 'default nil :font "Hack-10")))
+#+END_SRC
+** enable paradox
+#+BEGIN_SRC emacs-lisp
+  (use-package paradox
+    :config
+    (paradox-enable))
+#+END_SRC
+** avy
+#+BEGIN_SRC emacs-lisp
+  (use-package avy
+    :bind (("C-c SPC" . avy-goto-char-2)
+           ("M-g f" . avy-goto-line)
+           ("M-g w" . avy-goto-word-1)))
+#+END_SRC
+** ibuffer extra packages
+#+BEGIN_SRC emacs-lisp
+  ;; (use-package ibuffer-vc)
+  ;; (use-package ibuffer-git)
+#+END_SRC
+** whole line or region -> gives ERROR!!!
+#+BEGIN_SRC emacs-lisp
+  ;; (use-package whole-line-or-region
+  ;;   :config
+  ;;   (transient-mark-mode t)
+  ;;   (whole-line-or-region-global-mode t))
+#+END_SRC
+** company
+#+BEGIN_SRC emacs-lisp
+  (use-package company
+    :config
+    (add-hook 'after-init-hook 'global-company-mode))
+#+END_SRC
+** dumb-jump
+#+BEGIN_SRC emacs-lisp
+  (use-package dumb-jump
+    :config
+    (dumb-jump-mode)
+    (setq dumb-jump-aggressive nil))
+#+END_SRC
+** web-mode
+#+BEGIN_SRC emacs-lisp
+  (use-package web-mode)
 #+END_SRC
