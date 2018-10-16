@@ -2,12 +2,12 @@
 
 (defun config-open()
   (interactive)
-  (find-file "~/.emacs.d/config.org"))
+  (find-file "~/.emacs.d/config.el"))
 (global-set-key (kbd "C-c o") 'config-open)
 
 (defun config-load()
   (interactive)
-  (org-babel-load-file (expand-file-name "~/.emacs.d/config.org")))
+  (expand-file-name "~/.emacs.d/config.el"))
 (global-set-key (kbd "C-c l") 'config-load)
 
 (show-paren-mode t)
@@ -28,7 +28,7 @@
 (ido-mode t)
 (winner-mode 1)
 (windmove-default-keybindings)
-(add-to-list 'load-path "~/.emacs.d/custom_packages")
+(add-to-list 'load-path "~/.emacs.d/")
 (require 'ido-goto-symbol)
 (global-set-key (kbd "C-c i") 'ido-goto-symbol)
 (tool-bar-mode -1)
