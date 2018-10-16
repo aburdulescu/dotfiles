@@ -1,3 +1,5 @@
+(provide 'config)
+
 (defun config-open()
   (interactive)
   (find-file "~/.emacs.d/config.org"))
@@ -39,5 +41,4 @@
 (when window-system
   (global-hl-line-mode))
 (setq require-final-newline t)
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
 (electric-pair-mode 1)
