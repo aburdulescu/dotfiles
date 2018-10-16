@@ -1,44 +1,43 @@
-;;; package --- Summary
-;;; Commentary:
-;;; Code:
+(defun config-open()
+  (interactive)
+  (find-file "~/.emacs.d/config.org"))
+(global-set-key (kbd "C-c o") 'config-open)
 
-(provide 'config)
+(defun config-load()
+  (interactive)
+  (org-babel-load-file (expand-file-name "~/.emacs.d/config.org")))
+(global-set-key (kbd "C-c l") 'config-load)
 
-;; highlight matching paranthesis
 (show-paren-mode t)
 
-;; set indent type and size
-(setq-default c-basic-offset 4
-			  tab-width 4
-			  indent-tabs-mode nil)
+(setq-default c-basic-offset 2
+               tab-width 2
+               indent-tabs-mode nil)
 
-;; set C default style
 (setq c-default-style "k&r")
 
-;; use 'y-or-n' prompt
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;; don't make backup files
-;; don't show splash screen
-;; confirm emacs exit
-;; show column number
 (setq make-backup-files nil
-      inhibit-splash-screen t
-      ;; confirm-kill-emacs 'yes-or-no-p
-      column-number-mode t)
-
-;; activate ido and ido-everywhere
-(ido-mode t)
-
-;; undo/redo windows changes with C-c arrow
-(winner-mode 1)
-
-;; change windows with shift-arrow
-(windmove-default-keybindings)
-
-(require 'ido-goto-symbol)
-(global-set-key (kbd "M-i") 'ido-goto-symbol)
+      inhibit-splash-screen t)
 
 (setq ido-show-dot-for-dired t)
-
-;;; config.el ends here
+(setq ido-everywhere t)
+(ido-mode t)
+(winner-mode 1)
+(windmove-default-keybindings)
+(add-to-list 'load-path "~/.emacs.d/custom_packages")
+(require 'ido-goto-symbol)
+(global-set-key (kbd "C-c i") 'ido-goto-symbol)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(setq initial-scratch-message nil)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(define-key global-map (kbd "C-c C-r") 'revert-buffer)
+(define-key global-map (kbd "C-c g") 'rgrep)
+(setq visible-bell 1)
+(when window-system
+  (global-hl-line-mode))
+(setq require-final-newline t)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(electric-pair-mode 1)
