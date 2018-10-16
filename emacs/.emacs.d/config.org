@@ -85,13 +85,12 @@
 #+END_SRC
 ** revert buffer
 #+BEGIN_SRC emacs-lisp
-  (define-key global-map (kbd "C-c C-d") 'revert-buffer)
+  (define-key global-map (kbd "C-c C-r") 'revert-buffer)
 #+END_SRC
 ** rgrep
 #+BEGIN_SRC emacs-lisp
   (define-key global-map (kbd "C-c g") 'rgrep)
 #+END_SRC
-
 ** disable the bell
 #+BEGIN_SRC emacs-lisp
   (setq visible-bell 1)
@@ -219,9 +218,8 @@
 ** dracula theme
 #+BEGIN_SRC emacs-lisp
   (use-package dracula-theme
-    :config (load-theme 'dracula t)
-    (set-face-background 'mode-line "#510370")
-    (set-face-background 'mode-line-inactive "black"))
+    :config
+    (load-theme 'dracula t))
 #+END_SRC
 ** fonts
 #+BEGIN_SRC emacs-lisp
