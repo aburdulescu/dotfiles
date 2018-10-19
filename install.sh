@@ -11,27 +11,30 @@ cleanup()
 
 install_packages()
 {
-	apt update
-	apt install -y sudo
-	adduser aburdulescu sudo
     apt update
-    apt install -y \
-         xorg \
-         i3 \
-         lightdm \
-         module-assistant \
-         build-essential \
-         tmux \
-         cmake \
-         zsh \
-         python3 \
-         python3-pip \
-         python3-venv \
-         stow \
-	     vim \
-	     gnome-terminal \
-	     chromium \
-         curl
+    apt install -y sudo
+    adduser aburdulescu sudo
+    apt update
+
+    packages="xorg \
+                      i3 \
+                      lightdm \
+                      module-assistant \
+                      build-essential \
+                      tmux \
+                      cmake \
+                      zsh \
+                      python3 \
+                      python3-pip \
+                      python3-venv \
+                      stow \
+                      vim \
+                      gnome-terminal \
+                      chromium \
+                      curl
+                      "
+
+    apt install -y $packages
 
     apt build-dep -y emacs25
 
