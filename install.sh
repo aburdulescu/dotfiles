@@ -11,35 +11,51 @@ cleanup()
 
 install_packages()
 {
-    apt update
-    apt install -y sudo
+    sudo apt update
+    sudo apt install -y \
+         build-essential \
+         tmux \
+         cmake \
+         zsh \
+         python3 \
+         python3-pip \
+         python3-venv \
+         stow \
+         vim \
+         gnome-terminal \
+         chromium \
+         curl
+}
+
+install_sudo()
+{
+    apt update && apt install sudo
     adduser aburdulescu sudo
-    apt update
+}
 
-    packages="xorg \
-                      i3 \
-                      lightdm \
-                      module-assistant \
-                      build-essential \
-                      tmux \
-                      cmake \
-                      zsh \
-                      python3 \
-                      python3-pip \
-                      python3-venv \
-                      stow \
-                      vim \
-                      gnome-terminal \
-                      chromium \
-                      curl
-                      "
+install_ui()
+{
+    sudo apt update
+    sudo apt install -y xorg i3 lightdm
+    sudo dpkg-reconfigure lightdm
+}
 
-    apt install -y $packages
+prepare_for_vboxguestadditions()
+{
+    sudo apt update
+    sudo apt install -y module-assistant
+    sudo m-a prepare
+}
 
-    apt build-dep -y emacs25
+install_emacs()
+{
+    sudo apt build-dep -y emacs25
+    echo "Download emacs source from a mirror and install it!!"
+}
 
-    dpkg-reconfigure lightdm
-	m-a prepare
+install_ohmyzsh()
+{
+    sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 }
 
 install_dotfiles()
@@ -56,19 +72,17 @@ main()
     set -e # stop on error
     set -x # print what's executed
 
-    install_packages
+#    install_sudo
+#    install_packages
+#    install_ui
+#    install_emacs
+#    install_ohmyzsh
+
+#    prepare_for_vboxguestadditions
+
     [[ "$1" == "-f" ]] && cleanup
+
     install_dotfiles
-
-    set +e # stop on error
-    set +x # print what's executed
-
-    echo -e "Now you have to:\n"
-    echo -e "\tInstall oh-my-zsh:"
-    echo 'sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"'
-
-    echo -e "\n\tInstall emacs:"
-    echo "Download emacs source from a mirror and install it!!"
 }
 
 main $@
