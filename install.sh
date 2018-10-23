@@ -24,7 +24,9 @@ install_packages()
          vim \
          gnome-terminal \
          chromium \
-         curl
+         curl \
+         gdb \
+         net-tools
 }
 
 install_sudo()
@@ -73,7 +75,7 @@ main()
     set -x # print what's executed
 
 #    install_sudo
-#    install_packages
+    install_packages
 #    install_ui
 #    install_emacs
 #    install_ohmyzsh
