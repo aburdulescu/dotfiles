@@ -215,15 +215,6 @@
   ;;   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
   ;;   (setq projectile-indexing-method 'native))
 #+END_SRC
-** fonts
-#+BEGIN_SRC emacs-lisp
-  (if (condition-case nil
-          (x-list-fonts "Hack")
-        (error nil))
-      (progn
-        (add-to-list 'default-frame-alist '(font . "Hack-10"))
-        (set-face-attribute 'default nil :font "Hack-10")))
-#+END_SRC
 ** enable paradox
 #+BEGIN_SRC emacs-lisp
   (use-package paradox

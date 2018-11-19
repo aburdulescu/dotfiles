@@ -75,7 +75,7 @@ main()
     set -x # print what's executed
 
 #    install_sudo
-    install_packages
+#    install_packages
 #    install_ui
 #    install_emacs
 #    install_ohmyzsh
@@ -84,7 +84,7 @@ main()
 
     [[ "$1" == "-f" ]] && cleanup
 
-    install_dotfiles
+#    install_dotfiles
 }
 
 main $@
