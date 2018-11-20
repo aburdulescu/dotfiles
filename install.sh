@@ -60,6 +60,17 @@ install_ohmyzsh()
     sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 }
 
+install_go()
+{
+    sudo apt update
+    sudo apt install golang
+
+    echo "export GOPATH=$HOME/go" >> ~/.zshrc
+    echo "export PATH=$PATH:$GOPATH/bin" >> ~/.zshrc
+
+    mkdir -p ~/go/bin ~/go/src
+}
+
 install_dotfiles()
 {
     stow tmux
@@ -74,17 +85,18 @@ main()
     set -e # stop on error
     set -x # print what's executed
 
-#    install_sudo
-#    install_packages
-#    install_ui
-#    install_emacs
-#    install_ohmyzsh
+    # install_sudo
+    # install_packages
+    # install_ui
+    # install_emacs
+    # install_ohmyzsh
+    # install_go
 
-#    prepare_for_vboxguestadditions
+    # prepare_for_vboxguestadditions
 
-    [[ "$1" == "-f" ]] && cleanup
+    # [[ "$1" == "-f" ]] && cleanup
 
-#    install_dotfiles
+    # install_dotfiles
 }
 
 main $@
