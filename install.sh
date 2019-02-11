@@ -9,7 +9,9 @@ install_misc()
         gnome-terminal \
         chromium \
         curl \
-        net-tools
+        net-tools \
+        silversearcher-ag \
+        tree
 }
 
 install_python()
