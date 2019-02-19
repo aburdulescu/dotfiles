@@ -85,12 +85,22 @@ install_ohmyzsh()
 
 install_go()
 {
-    sudo apt update && sudo apt install -y golang
-
-    echo "export GOPATH=$HOME/go" >> ~/.zshrc
-    echo "export PATH=$PATH:$GOPATH/bin" >> ~/.zshrc
+    echo "Download the latest version from golang.org"
+    # sudo apt update && sudo apt install -y golang
 
     mkdir -p ~/go/bin ~/go/src
+
+    # TODO: check if not set already
+    echo "export GOROOT=/usr/local/go" >> ~/.zshrc
+    echo "export GOPATH=$HOME/go" >> ~/.zshrc
+    echo "export PATH=$PATH:$GOROOT/bin:$GOPATH/bin" >> ~/.zshrc
+
+    go get golang.org/x/tools/cmd/...
+    go get github.com/rogpeppe/godef
+    go get -u github.com/nsf/gocode
+    go get golang.org/x/tools/cmd/goimports
+    go get -u golang.org/x/tools/cmd/guru
+    sudo ldconfig
 }
 
 usage()
