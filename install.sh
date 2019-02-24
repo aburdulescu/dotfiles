@@ -105,6 +105,32 @@ install_go()
     sudo ldconfig
 }
 
+install_docker()
+{
+    echo "Following steps from https://docs.docker.com/install/linux/docker-ce/debian/"
+    sudo apt-get update
+    sudo apt-get install -y \
+         apt-transport-https \
+         ca-certificates \
+         curl \
+         gnupg2 \
+         software-properties-common
+    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+    sudo apt-key fingerprint 0EBFCD88
+    sudo add-apt-repository \
+         "deb [arch=amd64] https://download.docker.com/linux/debian \
+         $(lsb_release -cs) \
+         stable"
+    sudo apt-get update
+    sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+    sudo docker run hello-world
+}
+
+install_vagrant()
+{
+    echo "todo"
+}
+
 usage()
 {
     echo "Usage: $0 OPTIONS"
@@ -121,6 +147,7 @@ usage()
     echo -e "\tj - Tmux"
     echo -e "\tk - UI"
     echo -e "\tl - VBoxGuestAdditions"
+    echo -e "\tm - Docker"
 }
 
 main()
@@ -133,7 +160,7 @@ main()
         exit 1
     fi
 
-    while getopts 'abcdefgijklh' c
+    while getopts 'habcdefgijklm' c
     do
         case $c in
             a) INSTALL_CTOOLS=1 ;;
@@ -147,6 +174,7 @@ main()
             j) INSTALL_TMUX=1 ;;
             k) INSTALL_UI=1 ;;
             l) INSTALL_VBOXGADD=1 ;;
+            m) INSTALL_DOCKER=1 ;;
             h|*) usage ;;
         esac
     done
@@ -194,6 +222,10 @@ main()
     if [[ $INSTALL_VBOXGADD == 1 ]]
     then
         install_vboxguestadditions
+    fi
+    if [[ $INSTALL_DOCKER == 1 ]]
+    then
+        install_docker
     fi
 }
 
