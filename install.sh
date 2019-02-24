@@ -95,7 +95,7 @@ install_go()
     # TODO: check if not set already
     echo "export GOROOT=/usr/local/go" >> ~/.zshrc
     echo "export GOPATH="$GOPATH >> ~/.zshrc
-    echo "export PATH=$PATH:$GOROOT/bin:"$GOPATH"/bin" >> ~/.zshrc
+    echo "export PATH=\$PATH:\$GOROOT/bin:\$GOPATH/bin" >> ~/.zshrc
 
     go get golang.org/x/tools/cmd/...
     go get github.com/rogpeppe/godef
