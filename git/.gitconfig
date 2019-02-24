@@ -1,3 +1,10 @@
 [user]
 	email = andrei.burdulescu@protonmail.com
 	name = aburdulescu
+[alias]
+	st = status
+	ci = commit
+	df = diff
+	pl = pull
+	ph = push
+	co = checkout

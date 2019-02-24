@@ -3,17 +3,6 @@ alias em='emacs -nw'
 alias emg='emacs &'
 alias emc='emacsclient'
 
-# git
-alias gst='git status'
-alias gadd='git add'
-alias gci='git commit'
-alias gdi='git diff'
-alias gmv='git mv'
-alias gpl='git pull'
-alias gph='git push'
-alias gco='git checkout'
-alias grm='git rm'
-
 # tmux
 alias tmuxn='tmux new -s'
 alias tmuxa='tmux attach -t'

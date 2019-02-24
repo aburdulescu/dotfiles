@@ -88,12 +88,14 @@ install_go()
     echo "Download the latest version from golang.org"
     # sudo apt update && sudo apt install -y golang
 
-    mkdir -p ~/go/bin ~/go/src
+    GOPATH=$HOME/git/go
+
+    mkdir -p $GOPATH/bin $GOPATH/src
 
     # TODO: check if not set already
     echo "export GOROOT=/usr/local/go" >> ~/.zshrc
-    echo "export GOPATH=$HOME/go" >> ~/.zshrc
-    echo "export PATH=$PATH:$GOROOT/bin:$GOPATH/bin" >> ~/.zshrc
+    echo "export GOPATH="$GOPATH >> ~/.zshrc
+    echo "export PATH=$PATH:$GOROOT/bin:"$GOPATH"/bin" >> ~/.zshrc
 
     go get golang.org/x/tools/cmd/...
     go get github.com/rogpeppe/godef
