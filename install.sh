@@ -11,7 +11,8 @@ install_misc()
         curl \
         net-tools \
         silversearcher-ag \
-        tree
+        tree \
+        htop
 }
 
 install_python()
