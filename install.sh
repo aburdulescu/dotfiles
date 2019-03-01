@@ -33,6 +33,8 @@ install_ctools()
         cmake
 }
 
+# this can be avoided if root password is
+# left empty at install time
 install_sudo()
 {
     apt update && apt install sudo
