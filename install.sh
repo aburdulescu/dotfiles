@@ -7,12 +7,14 @@ install_misc()
         stow \
         vim \
         gnome-terminal \
-        chromium \
+        firefox-esr \
         curl \
         net-tools \
         silversearcher-ag \
         tree \
-        htop
+        htop \
+        evince \
+        libreoffice
 }
 
 install_python()
