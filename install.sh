@@ -14,7 +14,9 @@ install_misc()
         tree \
         htop \
         evince \
-        libreoffice
+        libreoffice \
+        network-manager \
+        pavucontrol
 }
 
 install_python()
