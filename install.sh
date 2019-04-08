@@ -16,7 +16,8 @@ install_misc()
         evince \
         libreoffice \
         network-manager \
-        pavucontrol
+        pavucontrol \
+        apache2-utils
 }
 
 install_python()
