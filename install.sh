@@ -139,6 +139,15 @@ install_vagrant()
     echo "todo"
 }
 
+install_testing()
+{
+    cd /etc/apt
+    cp sources.list sources.list.bak
+    current=$(lsb_release -cs)
+    sed -i 's/'$current'/testing/g' sources.list
+    sudo apt update && sudo apt dist-upgrade
+}
+
 usage()
 {
     echo "Usage: $0 OPTIONS"
