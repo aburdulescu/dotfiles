@@ -17,7 +17,8 @@ install_misc()
         libreoffice \
         network-manager \
         pavucontrol \
-        apache2-utils
+        apache2-utils \
+        jq
 }
 
 install_python()
