@@ -36,7 +36,10 @@ install_ctools()
     sudo apt install -y \
         build-essential \
         gdb \
-        cmake
+        cmake \
+        ninja-build \
+        clang \
+        valgrind
 }
 
 # this can be avoided if root password is
