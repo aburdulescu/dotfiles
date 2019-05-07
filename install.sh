@@ -16,6 +16,7 @@ install_misc()
         evince \
         libreoffice \
         network-manager \
+        network-manager-gnome \
         pavucontrol \
         apache2-utils \
         jq
@@ -39,6 +40,9 @@ install_ctools()
         cmake \
         ninja-build \
         clang \
+        clang-format \
+        clang-tidy \
+        clang-tools \
         valgrind
 }
 
@@ -55,6 +59,7 @@ install_ui()
 {
     sudo apt update && sudo apt install -y xorg i3 lightdm
     sudo dpkg-reconfigure lightdm
+    stow -t ~/.config/i3/ i3
     echo "Reboot needed!"
 }
 
