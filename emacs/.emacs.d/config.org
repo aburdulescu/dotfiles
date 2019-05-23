@@ -175,6 +175,7 @@
 (use-package dockerfile-mode)
 (use-package cmake-mode)
 (use-package markdown-mode)
+(use-package json-mode)
 #+END_SRC
 
 ** elpy
