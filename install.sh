@@ -19,7 +19,13 @@ install_misc()
         network-manager-gnome \
         pavucontrol \
         apache2-utils \
-        jq
+        jq \
+        npm
+}
+
+install_vscode()
+{
+
 }
 
 install_python()
