@@ -23,11 +23,6 @@ install_misc()
         npm
 }
 
-install_vscode()
-{
-
-}
-
 install_python()
 {
     sudo apt update
@@ -175,7 +170,7 @@ usage()
     echo -e "\te - Miscellaneous"
     echo -e "\tf - Oh-my-zsh"
     echo -e "\tg - Python"
-    echo -e "\th - Sudo"
+    echo -e "\ti - Sudo"
     echo -e "\tj - Tmux"
     echo -e "\tk - UI"
     echo -e "\tl - VBoxGuestAdditions"
