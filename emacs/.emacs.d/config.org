@@ -218,9 +218,9 @@
 #+END_SRC
 ** enable paradox
 #+BEGIN_SRC emacs-lisp
-  (use-package paradox
-    :config
-    (paradox-enable))
+;  (use-package paradox
+;    :config
+;    (paradox-enable))
 #+END_SRC
 ** avy
 #+BEGIN_SRC emacs-lisp
