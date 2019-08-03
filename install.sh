@@ -20,7 +20,8 @@ install_misc()
         pavucontrol \
         apache2-utils \
         jq \
-        npm
+        npm \
+        chromium
 }
 
 install_python()
