@@ -116,7 +116,7 @@
 ** Add MELPA
 #+BEGIN_SRC emacs-lisp
 (require 'package)
-(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 #+END_SRC
 
@@ -292,5 +292,16 @@
   (use-package go-guru
     :init
     (go-guru-hl-identifier-mode)
+    )
+#+END_SRC
+** clang-format
+#+BEGIN_SRC emacs-lisp
+  (use-package clang-format
+    :init
+    (defun my-clang-format-hook ()
+      (add-hook 'before-save-hook 'clang-format-buffer)
+      )
+    (add-hook 'c++-mode-hook 'my-clang-format-hook)
+    (add-hook 'c-mode-hook 'my-clang-format-hook)
     )
 #+END_SRC
