@@ -112,6 +112,11 @@
 #+BEGIN_SRC emacs-lisp
   (electric-pair-mode 1)
 #+END_SRC
+** icomplete
+#+BEGIN_SRC emacs-lisp
+  ;(icomplete-mode 1)
+#+END_SRC
+
 * MELPA packages
 ** Add MELPA
 #+BEGIN_SRC emacs-lisp
