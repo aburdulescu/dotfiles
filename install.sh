@@ -99,6 +99,8 @@ install_ohmyzsh()
     rm -f ~/.zsh_aliases
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     stow zsh && echo ". ~/.zsh_aliases" >> ~/.zshrc
+    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
+    echo "Add plugins: git, golang, docker, tmux, zsh-autosuggestions"
     echo "Reboot needed!"
 }
 
