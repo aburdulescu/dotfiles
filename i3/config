@@ -157,3 +157,6 @@ bar {
 
 # start network applet
 exec --no-startup-id nm-applet
+
+# screen lock
+bindsym $mod+b exec i3lock-fancy -gp -- scrot

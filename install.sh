@@ -21,7 +21,9 @@ install_misc()
         apache2-utils \
         jq \
         npm \
-        chromium
+        chromium \
+        i3lock-fancy \
+        strace
 }
 
 install_python()
