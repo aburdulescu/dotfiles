@@ -22,7 +22,6 @@ install_misc()
         jq \
         npm \
         chromium \
-        i3lock-fancy \
         strace
 }
 
@@ -61,7 +60,7 @@ install_sudo()
 
 install_ui()
 {
-    sudo apt update && sudo apt install -y xorg i3 lightdm
+    sudo apt update && sudo apt install -y xorg i3 lightdm i3blocks i3lock-fancy
     sudo dpkg-reconfigure lightdm
     stow -t ~/.config/i3/ i3
     echo "Reboot needed!"
