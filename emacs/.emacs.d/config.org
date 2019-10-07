@@ -62,7 +62,7 @@
 
 ** add custom ido-goto-symbol
 #+BEGIN_SRC emacs-lisp
-(add-to-list 'load-path "~/.emacs.d/custom_packages")
+(add-to-list 'load-path "~/.emacs.d/elisp")
 (require 'ido-goto-symbol)
 (global-set-key (kbd "C-c i") 'ido-goto-symbol)
 #+END_SRC
