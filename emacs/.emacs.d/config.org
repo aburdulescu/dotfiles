@@ -298,7 +298,8 @@
   (use-package clang-format
     :init
     (defun my-clang-format-hook ()
-      (add-hook 'before-save-hook 'clang-format-buffer)
+      (local-set-key (kbd "C-c f") 'clang-format-region)
+      ;;(add-hook 'before-save-hook 'clang-format-buffer)
       )
     (add-hook 'c++-mode-hook 'my-clang-format-hook)
     (add-hook 'c-mode-hook 'my-clang-format-hook)
