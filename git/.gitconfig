@@ -8,3 +8,5 @@
 	pl = pull
 	ph = push
 	co = checkout
+[credential]
+	helper = store
