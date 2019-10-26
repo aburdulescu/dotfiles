@@ -23,7 +23,7 @@ install_misc()
         npm \
         chromium \
         strace \
-        p7zip
+        p7zip-full
 }
 
 install_python()
