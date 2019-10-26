@@ -22,7 +22,8 @@ install_misc()
         jq \
         npm \
         chromium \
-        strace
+        strace \
+        p7zip
 }
 
 install_python()
