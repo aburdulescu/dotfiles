@@ -118,7 +118,10 @@ install_go()
     echo "export GOROOT=/usr/lib/go" >> ~/.zshrc
     echo "export GOPATH="$GOPATH >> ~/.zshrc
     echo "export PATH=\$PATH:\$GOROOT/bin:\$GOPATH/bin" >> ~/.zshrc
+}
 
+install_go_tools()
+{
     go get golang.org/x/tools/cmd/...
     go get github.com/rogpeppe/godef
     go get -u github.com/nsf/gocode
@@ -180,6 +183,7 @@ usage()
     echo -e "\tl - VBoxGuestAdditions"
     echo -e "\tm - Docker"
     echo -e "\tn - Install testing"
+    echo -e "\to - Install go tools"
 }
 
 main()
@@ -192,7 +196,7 @@ main()
         exit 1
     fi
 
-    while getopts 'habcdefgijklmn' c
+    while getopts 'habcdefgijklmno' c
 
     do
         case $c in
@@ -209,6 +213,7 @@ main()
             l) INSTALL_VBOXGADD=1 ;;
             m) INSTALL_DOCKER=1 ;;
             n) INSTALL_TESTING=1 ;;
+            o) INSTALL_GO_TOOLS=1 ;;
             h|*) usage ;;
         esac
     done
@@ -264,6 +269,10 @@ main()
     if [[ $INSTALL_TESTING == 1 ]]
     then
         install_testing
+    fi
+    if [[ $INSTALL_GO_TOOLS == 1 ]]
+    then
+        install_go_tools
     fi
 }
 
