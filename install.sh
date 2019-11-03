@@ -91,7 +91,7 @@ install_git()
 
 install_emacs()
 {
-    sudo apt update && sudo apt install -y emacs25
+    sudo apt update && sudo apt install -y emacs
     rm -rf ~/.emacs.d
     stow emacs
 }
@@ -108,15 +108,14 @@ install_ohmyzsh()
 
 install_go()
 {
-    echo "Download the latest version from golang.org"
-    # sudo apt update && sudo apt install -y golang
+    sudo apt update && sudo apt install -y golang
 
     GOPATH=$HOME/git/go
 
     mkdir -p $GOPATH/bin $GOPATH/src
 
     # TODO: check if not set already
-    echo "export GOROOT=/usr/local/go" >> ~/.zshrc
+    echo "export GOROOT=/usr/lib/go" >> ~/.zshrc
     echo "export GOPATH="$GOPATH >> ~/.zshrc
     echo "export PATH=\$PATH:\$GOROOT/bin:\$GOPATH/bin" >> ~/.zshrc
 
