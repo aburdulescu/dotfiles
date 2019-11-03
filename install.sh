@@ -63,6 +63,7 @@ install_ui()
 {
     sudo apt update && sudo apt install -y xorg i3 lightdm i3blocks i3lock-fancy
     sudo dpkg-reconfigure lightdm
+    mkdir -p ~/.config/i3
     stow -t ~/.config/i3/ i3
     echo "Reboot needed!"
 }
@@ -156,9 +157,9 @@ install_vagrant()
 install_testing()
 {
     cd /etc/apt
-    cp sources.list sources.list.bak
+    sudo cp sources.list sources.list.bak
     current=$(lsb_release -cs)
-    sed -i 's/'$current'/testing/g' sources.list
+    sudo sed -i 's/'$current'/testing/g' sources.list
     sudo apt update && sudo apt dist-upgrade
 }
 
@@ -179,6 +180,7 @@ usage()
     echo -e "\tk - UI"
     echo -e "\tl - VBoxGuestAdditions"
     echo -e "\tm - Docker"
+    echo -e "\tn - Install testing"
 }
 
 main()
@@ -191,7 +193,8 @@ main()
         exit 1
     fi
 
-    while getopts 'habcdefgijklm' c
+    while getopts 'habcdefgijklmn' c
+
     do
         case $c in
             a) INSTALL_CTOOLS=1 ;;
@@ -206,6 +209,7 @@ main()
             k) INSTALL_UI=1 ;;
             l) INSTALL_VBOXGADD=1 ;;
             m) INSTALL_DOCKER=1 ;;
+            n) INSTALL_TESTING=1 ;;
             h|*) usage ;;
         esac
     done
@@ -257,6 +261,10 @@ main()
     if [[ $INSTALL_DOCKER == 1 ]]
     then
         install_docker
+    fi
+    if [[ $INSTALL_TESTING == 1 ]]
+    then
+        install_testing
     fi
 }
 
