@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 install_misc()
 {
@@ -117,6 +117,7 @@ install_go()
     # TODO: check if not set already
     echo "export GOROOT=/usr/lib/go" >> ~/.zshrc
     echo "export GOPATH="$GOPATH >> ~/.zshrc
+    echo "export GOPROXY=https://proxy.golang.org" >> ~/.zshrc
     echo "export PATH=\$PATH:\$GOROOT/bin:\$GOPATH/bin" >> ~/.zshrc
 }
 
