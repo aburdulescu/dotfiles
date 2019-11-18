@@ -3,12 +3,6 @@ alias em='emacs -nw'
 alias emg='emacs &'
 alias emc='emacsclient'
 
-# tmux
-alias tmuxn='tmux new -s'
-alias tmuxa='tmux attach -t'
-alias tmuxks='tmux kill-session -t'
-alias tmuxls='tmux ls'
-
 # sshfs
-alias sshfs_m='~/projects/dotfiles/scripts/sshfs_mnt.sh'
-alias sshfs_u='~/projects/dotfiles/scripts/sshfs_umnt.sh'
+alias sshfs_m='~/.files/scripts/sshfs_mnt.sh'
+alias sshfs_u='~/.files/scripts/sshfs_umnt.sh'
