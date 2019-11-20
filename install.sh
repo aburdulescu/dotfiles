@@ -7,7 +7,6 @@ install_misc()
         stow \
         vim \
         gnome-terminal \
-        firefox-esr \
         curl \
         net-tools \
         silversearcher-ag \
@@ -20,10 +19,11 @@ install_misc()
         pavucontrol \
         apache2-utils \
         jq \
-        npm \
-        chromium \
+        #npm \
+        chromium-bsu \
         strace \
-        p7zip-full
+        p7zip-full \
+	time 
 }
 
 install_python()
