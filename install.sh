@@ -22,8 +22,10 @@ install_misc()
         #npm \
         chromium-bsu \
         strace \
+        ltrace \
+        dwarves \
         p7zip-full \
-	time 
+        time
 }
 
 install_python()
