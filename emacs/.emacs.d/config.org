@@ -1,4 +1,4 @@
-* [#B] Builtin packages
+* Builtin packages
 ** config functions
 **** open
 #+BEGIN_SRC emacs-lisp
@@ -118,29 +118,27 @@
 #+END_SRC
 ** blog config
 #+BEGIN_SRC emacs-lisp
-    (setq org-publish-project-alist
-          '(("blog" :components ("blog-pages" "blog-posts"))
-            ("blog-pages"
-             :base-directory "~/git/blog/"
-             :base-extension "org"
-             :publishing-directory "/tmp/blog/"
-             :publishing-function org-html-publish-to-html
-             :with-toc nil
-             :section-numbers nil
-             :html-postamble nil
-             )
-            ("blog-posts"
-             :base-directory "~/git/blog/posts/"
-             :base-extension "org"
-             :publishing-directory "/tmp/blog/posts/"
-             :publishing-function org-html-publish-to-html
-             :with-toc nil
-             :section-numbers nil
-             :with-author nil
-             :with-creator nil
-             :with-date t
-             )
-            ))
+  (setq org-publish-project-alist
+        '(("blog" :components ("blog-pages" "blog-posts"))
+          ("blog-pages"
+           :base-directory "~/git/blog/"
+           :base-extension "org"
+           :publishing-directory "/tmp/blog/"
+           :publishing-function org-html-publish-to-html
+           :with-toc nil
+           :section-numbers nil
+           :html-postamble nil
+           )
+          ("blog-posts"
+           :base-directory "~/git/blog/posts/"
+           :base-extension "org"
+           :publishing-directory "/tmp/blog/posts/"
+           :publishing-function org-html-publish-to-html
+           :with-toc nil
+           :section-numbers nil
+           :html-postamble nil
+           )
+          ))
 #+END_SRC
 
 * MELPA packages
