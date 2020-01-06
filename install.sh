@@ -93,7 +93,7 @@ install_git()
 
 install_emacs()
 {
-    sudo apt update && sudo apt install -y emacs
+    sudo apt update && sudo apt install -y emacs-nox
     rm -rf ~/.emacs.d
     stow emacs
 }
