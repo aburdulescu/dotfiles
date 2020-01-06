@@ -118,27 +118,8 @@
 #+END_SRC
 ** blog config
 #+BEGIN_SRC emacs-lisp
-  (setq org-publish-project-alist
-        '(("blog" :components ("blog-pages" "blog-posts"))
-          ("blog-pages"
-           :base-directory "~/git/blog/"
-           :base-extension "org"
-           :publishing-directory "/tmp/blog/"
-           :publishing-function org-html-publish-to-html
-           :with-toc nil
-           :section-numbers nil
-           :html-postamble nil
-           )
-          ("blog-posts"
-           :base-directory "~/git/blog/posts/"
-           :base-extension "org"
-           :publishing-directory "/tmp/blog/posts/"
-           :publishing-function org-html-publish-to-html
-           :with-toc nil
-           :section-numbers nil
-           :html-postamble nil
-           )
-          ))
+(add-to-list 'load-path "~/git/blog")
+(require 'blog-setup)
 #+END_SRC
 
 * MELPA packages
