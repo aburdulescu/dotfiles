@@ -96,6 +96,8 @@ install_emacs()
     sudo apt update && sudo apt install -y emacs
     rm -rf ~/.emacs.d
     stow emacs
+    systemctl --user enable emacs.service
+    systemctl --user start emacs.service
 }
 
 install_ohmyzsh()

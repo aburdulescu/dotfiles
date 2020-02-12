@@ -1,7 +1,6 @@
 # emacs
-alias em='emacs -nw'
-alias emg='emacs &'
-alias emc='emacsclient'
+alias em='emacsclient -t '
+alias emg='emacsclient -c '
 
 # sshfs
 alias sshfs_m='~/.files/scripts/sshfs_mnt.sh'
