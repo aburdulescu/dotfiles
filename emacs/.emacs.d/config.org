@@ -311,3 +311,10 @@
     (add-hook 'c-mode-hook 'my-clang-format-hook)
     )
 #+END_SRC
+** rtags
+#+BEGIN_SRC emacs-lisp
+  (use-package rtags
+    :init
+    (add-hook 'c++-mode-hook 'rtags-start-process-unless-running)
+    )
+#+END_SRC
