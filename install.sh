@@ -28,6 +28,12 @@ install_misc()
         time
 }
 
+install_term() {
+    sudo apt update
+    sudo apt install -y gnome-terminal
+    # TODO: install dracula theme
+}
+
 install_python()
 {
     sudo apt update
@@ -106,6 +112,7 @@ install_ohmyzsh()
     rm -f ~/.zsh_aliases
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     stow zsh && echo ". ~/.zsh_aliases" >> ~/.zshrc
+    # TODO: install dracula theme
     echo "Add plugins: git, golang, docker, tmux"
     echo "Reboot needed!"
 }

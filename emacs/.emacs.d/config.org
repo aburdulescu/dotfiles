@@ -318,3 +318,7 @@
     (add-hook 'c++-mode-hook 'rtags-start-process-unless-running)
     )
 #+END_SRC
+** dracula-theme
+#+BEGIN_SRC emacs-lisp
+  (use-package dracula-theme)
+#+END_SRC
