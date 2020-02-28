@@ -187,6 +187,7 @@
 (use-package markdown-mode)
 (use-package json-mode)
 (use-package protobuf-mode)
+(use-package yaml-mode)
 #+END_SRC
 
 ** elpy
