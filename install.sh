@@ -13,14 +13,14 @@ install_misc()
         tree \
         htop \
         evince \
-        libreoffice \
+#        libreoffice \
         network-manager \
         network-manager-gnome \
         pavucontrol \
         apache2-utils \
         jq \
         #npm \
-        chromium-bsu \
+ #       chromium-bsu \
         strace \
         ltrace \
         dwarves \
