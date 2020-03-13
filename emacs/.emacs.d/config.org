@@ -121,6 +121,10 @@
 (add-to-list 'load-path "~/git/blog")
 (require 'blog-setup)
 #+END_SRC
+** gdb
+#+BEGIN_SRC emacs-lisp
+  (setq gdb-many-windows t gdb-show-main t)
+#+END_SRC
 
 * MELPA packages
 ** Add MELPA
