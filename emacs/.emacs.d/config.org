@@ -316,8 +316,19 @@
 #+BEGIN_SRC emacs-lisp
   (use-package rtags
     :init
+    (defun my-rtags-hook ()
+      (local-set-key (kbd "C-c r j") 'rtags-find-symbol-at-point)
+      (local-set-key (kbd "C-c r r") 'rtags-find-references-at-point)
+      (local-set-key (kbd "C-c r l b") 'rtags-location-stack-back)
+      (local-set-key (kbd "C-c r l f") 'rtags-location-stack-forward)
+      (local-set-key (kbd "C-c r l r") 'rtags-location-stack-reset)
+      (local-set-key (kbd "C-c r l v") 'rtags-location-stack-visualize)
+      )
+
+    (add-hook 'c++-mode-hook 'my-rtags-hook)
+    (add-hook 'c-mode-hook 'my-rtags-hook)
     (add-hook 'c++-mode-hook 'rtags-start-process-unless-running)
-    )
+    (add-hook 'c-mode-hook 'rtags-start-process-unless-running))
 #+END_SRC
 ** dracula-theme
 #+BEGIN_SRC emacs-lisp
