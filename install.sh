@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 install_misc()
 {
     sudo apt update
@@ -112,7 +114,6 @@ install_ohmyzsh()
     rm -f ~/.zsh_aliases
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     stow zsh && echo ". ~/.zsh_aliases" >> ~/.zshrc
-    # TODO: install dracula theme
     echo "Add plugins: git, golang, docker, tmux"
     echo "Reboot needed!"
 }
@@ -121,13 +122,6 @@ install_go()
 {
     sudo apt update && sudo apt install -y golang
 
-    GOPATH=$HOME/git/go
-
-    mkdir -p $GOPATH/bin $GOPATH/src
-
-    # TODO: check if not set already
-    echo "export GOROOT=/usr/lib/go" >> ~/.zshrc
-    echo "export GOPATH="$GOPATH >> ~/.zshrc
     echo "export GOPROXY=https://proxy.golang.org" >> ~/.zshrc
     echo "export PATH=\$PATH:\$GOROOT/bin:\$GOPATH/bin" >> ~/.zshrc
 }

@@ -1,1 +1,7 @@
-../aliases/.aliases
+# emacs
+alias em='emacsclient -t '
+alias emg='emacsclient -c '
+
+# sshfs
+alias sshfs_m='~/.files/scripts/sshfs_mnt.sh'
+alias sshfs_u='~/.files/scripts/sshfs_umnt.sh'

@@ -118,8 +118,8 @@
 #+END_SRC
 ** blog config
 #+BEGIN_SRC emacs-lisp
-(add-to-list 'load-path "~/git/blog")
-(require 'blog-setup)
+;(add-to-list 'load-path "~/git/blog")
+;(require 'blog-setup)
 #+END_SRC
 ** gdb
 #+BEGIN_SRC emacs-lisp

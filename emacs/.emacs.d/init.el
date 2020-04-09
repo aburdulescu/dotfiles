@@ -1,1 +1,2 @@
-(org-babel-load-file "~/.emacs.d/config.org")
+(add-to-list 'load-path "~/.emacs.d/elisp")
+(require 'myinit)
