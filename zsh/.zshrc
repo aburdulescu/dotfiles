@@ -99,3 +99,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source ~/.files/zsh/.zsh_aliases
+
+export GOPROXY=https://proxy.golang.org
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin

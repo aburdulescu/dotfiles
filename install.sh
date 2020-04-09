@@ -24,6 +24,11 @@ install_misc()
         p7zip-full
 }
 
+install_mpd() {
+    # TODO: implement it
+    echo "here be dragons"
+}
+
 install_term() {
     # TODO: specify dracula patch name as arg?
     # TODO: handle repo and patch update
@@ -126,8 +131,6 @@ install_ohmyzsh()
 install_go()
 {
     sudo apt update && sudo apt install -y golang
-
-    echo "export GOPROXY=https://proxy.golang.org" >> ~/.zshrc
     echo "export PATH=\$PATH:\$GOROOT/bin:\$GOPATH/bin" >> ~/.zshrc
 }
 
