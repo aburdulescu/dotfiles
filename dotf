@@ -1,0 +1,120 @@
+#!/bin/bash
+
+SUPPORTED_PACKAGES="foo bar"
+
+usage()
+{
+    echo "Usage: dotf COMMAND PACKAGE0 ... PACKAGEn"
+    echo "COMMANDS:"
+    echo -e "\thelp\t\tprint this message"
+    echo -e "\thelp\t\tinstall something"
+    echo -e "\tupdate\t\tupdate something"
+    echo "PACKAGES:"
+    echo -e "\tall\t\tall packages"
+    for p in $SUPPORTED_PACKAGES
+    do
+        echo -e "\t"$p"\t\tpackage "$p
+    done
+}
+
+error() {
+    echo "error:" $1; echo ""
+    usage
+    exit 1
+}
+
+handle_install_all() {
+    echo "install all"
+}
+
+handle_install_foo() {
+    echo "install foo"
+}
+
+handle_install_bar() {
+    echo "install bar"
+}
+
+handle_install() {
+    if [[ $# -lt 1 ]]
+    then
+        error "need at least one package"
+    fi
+    packages=$@
+    for p in $packages
+    do
+        handle_install_$p
+    done
+}
+
+handle_update_all() {
+    echo "update all"
+}
+
+handle_update_foo() {
+    echo "update foo"
+}
+
+handle_update_bar() {
+    echo "update bar"
+}
+
+handle_update() {
+    if [[ $# -lt 1 ]]
+    then
+        error "need at least one package"
+    fi
+    packages=$@
+    for p in $packages
+    do
+        handle_update_$p
+    done
+}
+
+validate_package_names() {
+    if [[ $# -gt 0 && $1 == "all" ]]
+    then
+        if [[ $# -eq 1 ]]
+        then
+            return
+        else
+            error "'all' packages must be the only argument if provided"
+        fi
+    fi
+    packages=$@
+    for p in $packages
+    do
+        if [[ $SUPPORTED_PACKAGES != *"$p "* && $SUPPORTED_PACKAGES != *" $p"* ]]
+        then
+            error "package '$p' is not supported"
+        fi
+    done
+}
+
+main() {
+    set -e # stop on error
+
+    if [[ $# -lt 1 ]]
+    then
+        error "need the command"
+    fi
+
+    command=$1
+    shift
+
+    case $command in
+        "install")
+            validate_package_names $@
+            handle_install $@
+            ;;
+        "update")
+            validate_package_names $@
+            handle_update $@
+            ;;
+        "help"|*)
+            error "unknown command '$command'"
+            ;;
+    esac
+}
+
+main $@

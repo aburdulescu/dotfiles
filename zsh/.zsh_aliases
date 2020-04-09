@@ -1,3 +1,5 @@
+alias dotf='~/.files/dotf'
+
 # emacs
 alias em='emacsclient -t '
 alias emg='emacsclient -c '
