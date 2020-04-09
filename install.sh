@@ -1,14 +1,11 @@
 #!/bin/bash
 
-set -e
-
 install_misc()
 {
     sudo apt update
     sudo apt install -y \
         stow \
         vim \
-        gnome-terminal \
         curl \
         net-tools \
         silversearcher-ag \
@@ -28,9 +25,24 @@ install_misc()
 }
 
 install_term() {
-    # TODO: use st
-    sudo apt update
-    sudo apt install -y gnome-terminal
+    # TODO: specify dracula patch name as arg?
+    # TODO: handle repo and patch update
+    if [[ ! -d ~/p/st ]]
+    then
+        mkdir -p ~/p/st
+        sudo apt update && sudo apt install -y libx11-dev libxft-dev
+        git clone https://git.suckless.org/st ~/p/st
+        ST_DRACULA_PATCH_URL=https://st.suckless.org/patches/dracula/st-dracula-0.8.2.diff
+        wget $ST_DRACULA_PATCH_URL -O ~/p/st/dracula.diff
+        cd ~/p/st
+        patch -p1 < dracula.diff
+        cd -
+    fi
+    cd ~/p/st
+    make clean
+    make
+    sudo make install
+    sudo ldconfig
 }
 
 install_python()
@@ -176,13 +188,13 @@ usage()
     echo -e "\te - Miscellaneous"
     echo -e "\tf - Oh-my-zsh"
     echo -e "\tg - Python"
-    echo -e "\ti - Sudo"
-    echo -e "\tj - Tmux"
-    echo -e "\tk - UI"
-    echo -e "\tl - VBoxGuestAdditions"
-    echo -e "\tm - Docker"
-    echo -e "\tn - Install testing"
-    echo -e "\to - Install go tools"
+    echo -e "\ti - Tmux"
+    echo -e "\tj - UI"
+    echo -e "\tk - VBoxGuestAdditions"
+    echo -e "\tl - Docker"
+    echo -e "\tm - Install testing"
+    echo -e "\tn - Install go tools"
+    echo -e "\to - Install terminal"
 }
 
 main()
@@ -206,13 +218,13 @@ main()
             e) INSTALL_MISC=1 ;;
             f) INSTALL_OHMYZSH=1 ;;
             g) INSTALL_PYTHON=1 ;;
-            i) INSTALL_SUDO=1 ;;
-            j) INSTALL_TMUX=1 ;;
-            k) INSTALL_UI=1 ;;
-            l) INSTALL_VBOXGADD=1 ;;
-            m) INSTALL_DOCKER=1 ;;
-            n) INSTALL_TESTING=1 ;;
-            o) INSTALL_GO_TOOLS=1 ;;
+            i) INSTALL_TMUX=1 ;;
+            j) INSTALL_UI=1 ;;
+            k) INSTALL_VBOXGADD=1 ;;
+            l) INSTALL_DOCKER=1 ;;
+            m) INSTALL_TESTING=1 ;;
+            n) INSTALL_GO_TOOLS=1 ;;
+            o) INSTALL_TERM=1 ;;
             h|*) usage ;;
         esac
     done
@@ -245,10 +257,6 @@ main()
     then
         install_python
     fi
-    if [[ $INSTALL_SUDO == 1 ]]
-    then
-        install_sudo
-    fi
     if [[ $INSTALL_TMUX == 1 ]]
     then
         install_tmux
@@ -272,6 +280,10 @@ main()
     if [[ $INSTALL_GO_TOOLS == 1 ]]
     then
         install_go_tools
+    fi
+    if [[ $INSTALL_TERM == 1 ]]
+    then
+        install_term
     fi
 }
 
