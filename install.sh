@@ -15,25 +15,22 @@ install_misc()
         tree \
         htop \
         evince \
-#        libreoffice \
         network-manager \
         network-manager-gnome \
         pavucontrol \
         apache2-utils \
         jq \
-        #npm \
- #       chromium-bsu \
         strace \
         ltrace \
         dwarves \
-        p7zip-full \
-        time
+        time \
+        p7zip-full
 }
 
 install_term() {
+    # TODO: use st
     sudo apt update
     sudo apt install -y gnome-terminal
-    # TODO: install dracula theme
 }
 
 install_python()
@@ -60,19 +57,11 @@ install_ctools()
         valgrind
 }
 
-# this can be avoided if root password is
-# left empty at install time
-install_sudo()
-{
-    apt update && apt install sudo
-    adduser aburdulescu sudo
-    echo "Reboot needed!"
-}
-
 install_ui()
 {
     sudo apt update && sudo apt install -y xorg i3 lightdm i3blocks i3lock-fancy
     sudo dpkg-reconfigure lightdm
+    rm -rf ~/.config/i3
     mkdir -p ~/.config/i3
     stow -t ~/.config/i3/ i3
     echo "Reboot needed!"
@@ -111,10 +100,14 @@ install_emacs()
 install_ohmyzsh()
 {
     sudo apt update && sudo apt install -y zsh
-    rm -f ~/.zsh_aliases
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    stow zsh && echo ". ~/.zsh_aliases" >> ~/.zshrc
-    echo "Add plugins: git, golang, docker, tmux"
+    rm -rf ~/.oh-my-zsh ~/.zshrc
+    rm -rf /tmp/ohmyzsh/ && mkdir -p /tmp/ohmyzsh/ && cd /tmp/ohmyzsh
+    wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
+    chmod +x install.sh
+    RUNZSH=no ./install.sh
+    cd -
+    mv ~/.zshrc ~/.zshrc.default
+    stow zsh
     echo "Reboot needed!"
 }
 
