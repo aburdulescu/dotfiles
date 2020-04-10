@@ -1,6 +1,55 @@
 #!/bin/bash
 
-SUPPORTED_PACKAGES="foo bar"
+APT_PACKAGES="
+    stow
+    vim
+    curl
+    net-tools
+    silversearcher-ag
+    tree
+    htop
+    evince
+    network-manager
+    network-manager-gnome
+    pavucontrol
+    apache2-utils
+    jq
+    strace
+    ltrace
+    dwarves
+    time
+    p7zip-full
+    build-essential
+    gdb
+    cmake
+    ninja-build
+    clang
+    clang-format
+    clang-tidy
+    clang-tools
+    valgrind
+    xorg
+    i3
+    lightdm
+    i3blocks
+    i3lock-fancy
+    tmux
+    git
+    emacs
+    zsh
+    golang
+"
+
+CUSTOM_PACKAGES="
+    i3
+    git
+    st
+    tmux
+    emacs
+    docker
+    golang
+    ohmyzsh
+"
 
 usage()
 {
@@ -11,7 +60,7 @@ usage()
     echo -e "\tupdate\t\tupdate something"
     echo "PACKAGES:"
     echo -e "\tall\t\tall packages"
-    for p in $SUPPORTED_PACKAGES
+    for p in $CUSTOM_PACKAGES
     do
         echo -e "\t"$p"\t\tpackage "$p
     done
@@ -21,6 +70,10 @@ error() {
     echo "error:" $1; echo ""
     usage
     exit 1
+}
+
+install_base_packages() {
+    sudo apt update && sudo apt install -y $APT_PACKAGES
 }
 
 handle_install_all() {
@@ -40,6 +93,7 @@ handle_install() {
     then
         error "need at least one package"
     fi
+    install_base_packages
     packages=$@
     for p in $packages
     do
@@ -84,7 +138,7 @@ validate_package_names() {
     packages=$@
     for p in $packages
     do
-        if [[ $SUPPORTED_PACKAGES != *"$p "* && $SUPPORTED_PACKAGES != *" $p"* ]]
+        if [[ $CUSTOM_PACKAGES != *"$p "* && $CUSTOM_PACKAGES != *" $p"* ]]
         then
             error "package '$p' is not supported"
         fi

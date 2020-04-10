@@ -50,15 +50,6 @@ install_term() {
     sudo ldconfig
 }
 
-install_python()
-{
-    sudo apt update
-    sudo apt install -y \
-        python3 \
-        python3-pip \
-        python3-venv
-}
-
 install_ctools()
 {
     sudo apt update
