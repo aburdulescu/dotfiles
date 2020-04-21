@@ -62,9 +62,9 @@
 
 ** add custom ido-goto-symbol
 #+BEGIN_SRC emacs-lisp
-(add-to-list 'load-path "~/.emacs.d/elisp")
-(require 'ido-goto-symbol)
-(global-set-key (kbd "C-c i") 'ido-goto-symbol)
+;(add-to-list 'load-path "~/.emacs.d/elisp")
+;(require 'ido-goto-symbol)
+;(global-set-key (kbd "C-c i") 'ido-goto-symbol)
 #+END_SRC
 
 ** disable tool-bar
@@ -130,6 +130,7 @@
 ** Add MELPA
 #+BEGIN_SRC emacs-lisp
 (require 'package)
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 #+END_SRC
@@ -145,6 +146,11 @@
 
 ;; ensure = make sure is installed
 (setq-default use-package-always-ensure t)
+#+END_SRC
+
+** gnu-elpa-keyring-update
+#+BEGIN_SRC emacs-lisp
+  (use-package gnu-elpa-keyring-update)
 #+END_SRC
 
 ** auto-complete
@@ -334,17 +340,15 @@
 ** lsp
 #+BEGIN_SRC emacs-lisp
   (use-package lsp-mode
-    :hook (
-           (c++-mode . lsp-deferred)
-           (lsp-mode . lsp-enable-which-key-integration)
-           )
-    :commands lsp lsp-deferred
-    )
-  (use-package lsp-ui
-    :commands lsp-ui-mode
+    :config
+    (add-hook 'c++-mode-hook#'lsp)
+    (add-hook 'lsp-mode-hook#'lsp-enable-which-key-integration)
+    (setq lsp-clients-clangd-args '("-j=4" "--background-index" "--log=error" "--clang-tidy"))
     )
 
-  (use-package lsp-treemacs
-    :commands lsp-treemacs-errors-list
+  (use-package lsp-ui
+    :init
+    (add-hook 'c++-mode-hook 'lsp-ui-mode)
+    (global-set-key (kbd "C-c i") 'lsp-ui-imenu)
     )
 #+END_SRC
