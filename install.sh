@@ -25,11 +25,14 @@ install_misc()
 }
 
 install_mpd() {
-    # TODO: implement it
-    echo "here be dragons"
+    sudo apt install -y mpd ncmpcpp
+    sudo systemctl disable mpd.service
+    mkdir -p ~/.mpd/playlists
+    mkdir -p ~/.ncmpcpp/lyrics
+    stow mpd
 }
 
-install_term() {
+install_st() {
     # TODO: specify dracula patch name as arg?
     # TODO: handle repo and patch update
     if [[ ! -d ~/p/st ]]
@@ -188,7 +191,8 @@ usage()
     echo -e "\tl - Docker"
     echo -e "\tm - Install testing"
     echo -e "\tn - Install go tools"
-    echo -e "\to - Install terminal"
+    echo -e "\to - Install st"
+    echo -e "\tp - Install mpd"
 }
 
 main()
@@ -201,7 +205,7 @@ main()
         exit 1
     fi
 
-    while getopts 'habcdefgijklmno' c
+    while getopts 'habcdefgijklmnop' c
 
     do
         case $c in
@@ -218,7 +222,8 @@ main()
             l) INSTALL_DOCKER=1 ;;
             m) INSTALL_TESTING=1 ;;
             n) INSTALL_GO_TOOLS=1 ;;
-            o) INSTALL_TERM=1 ;;
+            o) INSTALL_ST=1 ;;
+            p) INSTALL_MPD=1 ;;
             h|*) usage ;;
         esac
     done
@@ -275,9 +280,13 @@ main()
     then
         install_go_tools
     fi
-    if [[ $INSTALL_TERM == 1 ]]
+    if [[ $INSTALL_ST == 1 ]]
     then
-        install_term
+        install_st
+    fi
+    if [[ $INSTALL_MPD == 1 ]]
+    then
+        install_mpd
     fi
 }
 
