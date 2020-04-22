@@ -21,8 +21,8 @@
 
 ** set indent type and size
 #+BEGIN_SRC emacs-lisp
-(setq-default c-basic-offset 4
-			   tab-width 4
+(setq-default c-basic-offset 2
+			   tab-width 2
 			   indent-tabs-mode nil)
 #+END_SRC
 
@@ -62,9 +62,9 @@
 
 ** add custom ido-goto-symbol
 #+BEGIN_SRC emacs-lisp
-(add-to-list 'load-path "~/.emacs.d/elisp")
-(require 'ido-goto-symbol)
-(global-set-key (kbd "C-c i") 'ido-goto-symbol)
+;(add-to-list 'load-path "~/.emacs.d/elisp")
+;(require 'ido-goto-symbol)
+;(global-set-key (kbd "C-c i") 'ido-goto-symbol)
 #+END_SRC
 
 ** disable tool-bar
@@ -130,6 +130,7 @@
 ** Add MELPA
 #+BEGIN_SRC emacs-lisp
 (require 'package)
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 #+END_SRC
@@ -147,19 +148,24 @@
 (setq-default use-package-always-ensure t)
 #+END_SRC
 
+** gnu-elpa-keyring-update
+#+BEGIN_SRC emacs-lisp
+  (use-package gnu-elpa-keyring-update)
+#+END_SRC
+
 ** auto-complete
 #+BEGIN_SRC emacs-lisp
-    (use-package auto-complete
-      :init
-      (ac-config-default)
-      (global-auto-complete-mode t))
+  ;(use-package auto-complete
+  ;      :init
+  ;      (ac-config-default)
+  ;      (global-auto-complete-mode t))
 #+END_SRC
 
 ** flycheck
 #+BEGIN_SRC emacs-lisp
-  ;; (use-package flycheck
-  ;;   :init
-  ;;   (global-flycheck-mode))
+  (use-package flycheck
+    :init
+    (global-flycheck-mode))
 #+END_SRC
 
 ** magit
@@ -234,10 +240,10 @@
 #+END_SRC
 ** avy
 #+BEGIN_SRC emacs-lisp
-  (use-package avy
-    :bind (("C-c SPC" . avy-goto-char-2)
-           ("M-g f" . avy-goto-line)
-           ("M-g w" . avy-goto-word-1)))
+  ;(use-package avy
+  ;  :bind (("C-c SPC" . avy-goto-char-2)
+  ;         ("M-g f" . avy-goto-line)
+  ;         ("M-g w" . avy-goto-word-1)))
 #+END_SRC
 ** ibuffer extra packages
 #+BEGIN_SRC emacs-lisp
@@ -253,9 +259,9 @@
 #+END_SRC
 ** company
 #+BEGIN_SRC emacs-lisp
-  ;; (use-package company
-  ;;   :config
-  ;;   (add-hook 'after-init-hook 'global-company-mode))
+   (use-package company
+     :config
+     (add-hook 'after-init-hook 'global-company-mode))
 #+END_SRC
 ** dumb-jump
 #+BEGIN_SRC emacs-lisp
@@ -306,35 +312,43 @@
 #+END_SRC
 ** clang-format
 #+BEGIN_SRC emacs-lisp
-  (use-package clang-format
-    :init
-    (defun my-clang-format-hook ()
-      (local-set-key (kbd "C-c f") 'clang-format-region)
-      ;;(add-hook 'before-save-hook 'clang-format-buffer)
-      )
-    (add-hook 'c++-mode-hook 'my-clang-format-hook)
-    (add-hook 'c-mode-hook 'my-clang-format-hook)
-    )
+  (use-package clang-format)
 #+END_SRC
 ** rtags
 #+BEGIN_SRC emacs-lisp
-  (use-package rtags
-    :init
-    (defun my-rtags-hook ()
-      (local-set-key (kbd "C-c r j") 'rtags-find-symbol-at-point)
-      (local-set-key (kbd "C-c r r") 'rtags-find-references-at-point)
-      (local-set-key (kbd "C-c r l b") 'rtags-location-stack-back)
-      (local-set-key (kbd "C-c r l f") 'rtags-location-stack-forward)
-      (local-set-key (kbd "C-c r l r") 'rtags-location-stack-reset)
-      (local-set-key (kbd "C-c r l v") 'rtags-location-stack-visualize)
-      )
+  ;; (use-package rtags
+  ;;   :init
+  ;;   (defun my-rtags-hook ()
+  ;;     (local-set-key (kbd "C-c r j") 'rtags-find-symbol-at-point)
+  ;;     (local-set-key (kbd "C-c r r") 'rtags-find-references-at-point)
+  ;;     (local-set-key (kbd "C-c r l b") 'rtags-location-stack-back)
+  ;;     (local-set-key (kbd "C-c r l f") 'rtags-location-stack-forward)
+  ;;     (local-set-key (kbd "C-c r l r") 'rtags-location-stack-reset)
+  ;;     (local-set-key (kbd "C-c r l v") 'rtags-location-stack-visualize)
+  ;;     )
 
-    (add-hook 'c++-mode-hook 'my-rtags-hook)
-    (add-hook 'c-mode-hook 'my-rtags-hook)
-    (add-hook 'c++-mode-hook 'rtags-start-process-unless-running)
-    (add-hook 'c-mode-hook 'rtags-start-process-unless-running))
+  ;;   (add-hook 'c++-mode-hook 'my-rtags-hook)
+  ;;   (add-hook 'c-mode-hook 'my-rtags-hook)
+  ;;   (add-hook 'c++-mode-hook 'rtags-start-process-unless-running)
+  ;;   (add-hook 'c-mode-hook 'rtags-start-process-unless-running))
 #+END_SRC
 ** dracula-theme
 #+BEGIN_SRC emacs-lisp
   (use-package dracula-theme)
+#+END_SRC
+
+** lsp
+#+BEGIN_SRC emacs-lisp
+  (use-package lsp-mode
+    :config
+    (add-hook 'c++-mode-hook#'lsp)
+    (add-hook 'lsp-mode-hook#'lsp-enable-which-key-integration)
+    (setq lsp-clients-clangd-args '("-j=4" "--background-index" "--log=error" "--clang-tidy"))
+    )
+
+  (use-package lsp-ui
+    :init
+    (add-hook 'c++-mode-hook 'lsp-ui-mode)
+    (global-set-key (kbd "C-c i") 'lsp-ui-imenu)
+    )
 #+END_SRC
