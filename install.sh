@@ -21,7 +21,8 @@ install_misc()
         ltrace \
         dwarves \
         time \
-	firefox-esr \
+	      firefox-esr \
+        chromium \
         p7zip-full
 }
 
