@@ -15,9 +15,7 @@ emacs/.emacs.d/smex-items
 emacs/.emacs.d/transient
 
 # for mpd
-mpd/.mpd/mpd.db
-mpd/.mpd/mpd.log
 mpd/.mpd/mpd.pid
-mpd/.mpd/mpdstate
 mpd/.mpd/playlists
 mpd/.ncmpcpp/lyrics
+mpd/.ncmpcpp/error.log
