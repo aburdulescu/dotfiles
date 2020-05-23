@@ -192,10 +192,10 @@ usage()
     echo -e "\tj - UI"
     echo -e "\tk - VBoxGuestAdditions"
     echo -e "\tl - Docker"
-    echo -e "\tm - Install testing"
-    echo -e "\tn - Install go tools"
-    echo -e "\to - Install st"
-    echo -e "\tp - Install mpd"
+    echo -e "\tm - Debian testing"
+    echo -e "\tn - go tools"
+    echo -e "\to - st"
+    echo -e "\tp - mpd"
 }
 
 main()
