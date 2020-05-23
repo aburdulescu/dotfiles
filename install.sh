@@ -28,6 +28,7 @@ install_misc()
 
 install_mpd() {
     sudo apt install -y mpd ncmpcpp
+    sudo systemctl stop mpd.service
     sudo systemctl disable mpd.service
     mkdir -p ~/.mpd/playlists
     mkdir -p ~/.ncmpcpp/lyrics

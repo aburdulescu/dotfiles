@@ -259,9 +259,12 @@
 #+END_SRC
 ** company
 #+BEGIN_SRC emacs-lisp
-   (use-package company
-     :config
-     (add-hook 'after-init-hook 'global-company-mode))
+  (use-package company
+    :config
+    (add-hook 'after-init-hook 'global-company-mode)
+    (setq company-minimum-prefix-length 1
+          company-idle-delay 0.0)
+    )
 #+END_SRC
 ** dumb-jump
 #+BEGIN_SRC emacs-lisp
