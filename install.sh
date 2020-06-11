@@ -11,7 +11,7 @@ install_misc()
         silversearcher-ag \
         tree \
         htop \
-        evince \
+        zathura \
         network-manager \
         network-manager-gnome \
         pavucontrol \
@@ -23,7 +23,9 @@ install_misc()
         time \
 	      firefox-esr \
         chromium \
-        p7zip-full
+        p7zip-full \
+        dnsutils \
+        linux-perf
 }
 
 install_mpd() {
@@ -128,7 +130,7 @@ install_ohmyzsh()
 install_go()
 {
     sudo apt update && sudo apt install -y golang
-    echo "export PATH=\$PATH:\$GOROOT/bin:\$GOPATH/bin" >> ~/.zshrc
+    install_go_tools
 }
 
 install_go_tools()
