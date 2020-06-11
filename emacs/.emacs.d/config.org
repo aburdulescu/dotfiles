@@ -116,10 +116,10 @@
 #+BEGIN_SRC emacs-lisp
   ;(icomplete-mode 1)
 #+END_SRC
-** blog config
+** website config
 #+BEGIN_SRC emacs-lisp
-;(add-to-list 'load-path "~/git/blog")
-;(require 'blog-setup)
+(add-to-list 'load-path "~/w/website")
+(require 'website-setup)
 #+END_SRC
 ** gdb
 #+BEGIN_SRC emacs-lisp
