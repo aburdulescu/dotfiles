@@ -125,6 +125,7 @@ install_ohmyzsh()
     cd -
     mv ~/.zshrc ~/.zshrc.default
     stow zsh
+    stow -t ~/.oh-my-zsh/custom/plugins/ zsh_plugins/
     echo "Reboot needed!"
 }
 
