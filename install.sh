@@ -21,7 +21,7 @@ install_misc()
         ltrace \
         dwarves \
         time \
-	      firefox-esr \
+        firefox-esr \
         chromium \
         p7zip-full \
         dnsutils \
@@ -70,6 +70,7 @@ install_ctools()
         clang-format \
         clang-tidy \
         clang-tools \
+        clangd \
         valgrind
 }
 
