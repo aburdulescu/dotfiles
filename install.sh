@@ -25,7 +25,9 @@ install_misc()
         chromium \
         p7zip-full \
         dnsutils \
-        linux-perf
+        linux-perf \
+        mpv \
+        youtube-dl
 }
 
 install_mpd() {
