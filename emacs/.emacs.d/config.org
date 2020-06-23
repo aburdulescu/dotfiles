@@ -344,9 +344,13 @@
 #+BEGIN_SRC emacs-lisp
   (use-package lsp-mode
     :config
+    (add-hook 'c-mode-hook#'lsp)
     (add-hook 'c++-mode-hook#'lsp)
     (add-hook 'lsp-mode-hook#'lsp-enable-which-key-integration)
     (setq lsp-clients-clangd-args '("-j=4" "--background-index" "--log=error" "--clang-tidy"))
+    (global-set-key (kbd "C-c f i") 'lsp-find-definition)
+    (global-set-key (kbd "C-c f r") 'lsp-find-references)
+    (global-set-key (kbd "C-c f d") 'lsp-find-declaration)
     )
 
   (use-package lsp-ui
