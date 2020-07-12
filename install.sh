@@ -182,6 +182,8 @@ install_testing()
     sudo apt update && sudo apt dist-upgrade
 }
 
+# TODO: install ssg5 static site generator + lowdown
+
 usage()
 {
     echo "Usage: $0 OPTIONS"
