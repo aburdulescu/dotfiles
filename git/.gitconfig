@@ -10,3 +10,7 @@
 	co = checkout
 [credential]
 	helper = store
+[core]
+	editor = vim
+[pull]
+	rebase = false
