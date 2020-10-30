@@ -127,7 +127,7 @@
 #+END_SRC
 ** line numbers
 #+BEGIN_SRC emacs-lisp
-  (display-line-numbers-mode t)
+  (global-display-line-numbers-mode)
 #+END_SRC
 
 * MELPA packages
