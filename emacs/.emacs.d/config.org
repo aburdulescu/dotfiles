@@ -125,6 +125,10 @@
 #+BEGIN_SRC emacs-lisp
   (setq gdb-many-windows t gdb-show-main t)
 #+END_SRC
+** line numbers
+#+BEGIN_SRC emacs-lisp
+  (global-display-line-numbers-mode)
+#+END_SRC
 
 * MELPA packages
 ** Add MELPA
@@ -347,7 +351,7 @@
     (add-hook 'c-mode-hook#'lsp)
     (add-hook 'c++-mode-hook#'lsp)
     (add-hook 'lsp-mode-hook#'lsp-enable-which-key-integration)
-    (setq lsp-clients-clangd-args '("-j=4" "--background-index" "--log=error" "--clang-tidy"))
+    (setq lsp-clients-clangd-args '("-j=1" "--background-index" "--log=error"))
     (global-set-key (kbd "C-c f i") 'lsp-find-definition)
     (global-set-key (kbd "C-c f r") 'lsp-find-references)
     (global-set-key (kbd "C-c f d") 'lsp-find-declaration)
