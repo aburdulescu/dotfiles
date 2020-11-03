@@ -167,9 +167,12 @@
 
 ** flycheck
 #+BEGIN_SRC emacs-lisp
-  (use-package flycheck
-    :init
-    (global-flycheck-mode))
+    (use-package flycheck
+      :init
+      (add-hook 'c-mode-hook 'flycheck-mode)
+      (add-hook 'c++-mode-hook 'flycheck-mode)
+      (add-hook 'web-mode-hook 'flycheck-mode)
+      (add-hook 'json-mode-hook 'flycheck-mode))
 #+END_SRC
 
 ** magit
