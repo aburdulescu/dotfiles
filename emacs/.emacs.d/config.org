@@ -116,11 +116,6 @@
 #+BEGIN_SRC emacs-lisp
   ;(icomplete-mode 1)
 #+END_SRC
-** website config
-#+BEGIN_SRC emacs-lisp
-;(add-to-list 'load-path "~/w/website")
-;(require 'website-setup)
-#+END_SRC
 ** gdb
 #+BEGIN_SRC emacs-lisp
   (setq gdb-many-windows t gdb-show-main t)
