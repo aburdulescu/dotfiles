@@ -70,9 +70,7 @@
 ** disable tool-bar
 #+BEGIN_SRC emacs-lisp
  (tool-bar-mode -1)
-#+END_SRC
-** disable scroll-bar
-#+BEGIN_SRC emacs-lisp
+ (menu-bar-mode -1)
  (scroll-bar-mode -1)
 #+END_SRC
 ** empty scratch buffer
