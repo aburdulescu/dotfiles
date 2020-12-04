@@ -361,7 +361,7 @@
     (lsp-enable-which-key-integration t)
     (add-hook 'c-mode-hook#'lsp)
     (add-hook 'c++-mode-hook#'lsp)
-    (setq lsp-clients-clangd-args '("-j=1" "--background-index" "--log=error"))
+    (setq lsp-clients-clangd-args '("-j=1" "--background-index" "--log=verbose" "--clang-tidy" "--header-insertion=never" "--fallback-style=google" "--suggest-missing-includes" "--pch-storage=memory" "--pretty"))
     )
 
   (use-package lsp-ui
