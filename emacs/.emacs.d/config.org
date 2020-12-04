@@ -353,25 +353,28 @@
 
 ** lsp
 #+BEGIN_SRC emacs-lisp
-      (use-package lsp-mode
-        :commands (lsp lsp-deferred)
-        :init
-        (setq lsp-keymap-prefix "C-c f")
-        :config
-        (lsp-enable-which-key-integration t)
-        (add-hook 'c-mode-hook#'lsp)
-        (add-hook 'c++-mode-hook#'lsp)
-        (setq lsp-clients-clangd-args '("-j=1" "--background-index" "--log=error"))
-        )
+  (use-package lsp-mode
+    :commands (lsp lsp-deferred)
+    :init
+    (setq lsp-keymap-prefix "C-c f")
+    :config
+    (lsp-enable-which-key-integration t)
+    (add-hook 'c-mode-hook#'lsp)
+    (add-hook 'c++-mode-hook#'lsp)
+    (setq lsp-clients-clangd-args '("-j=1" "--background-index" "--log=error"))
+    )
 
-      (use-package lsp-ui
-        :init
-        (add-hook 'c++-mode-hook 'lsp-ui-mode)
-        (global-set-key (kbd "C-c i") 'lsp-ui-imenu)
-        (setq lsp-ui-sideline-enable t)
-        (setq lsp-ui-sideline-show-hover nil)
-        (setq lsp-ui-doc-position 'bottom)
-        )
+  (use-package lsp-ui
+    :init
+    (add-hook 'c++-mode-hook 'lsp-ui-mode)
+    (setq lsp-ui-sideline-enable t)
+    (setq lsp-ui-sideline-show-hover nil)
+    (setq lsp-ui-doc-position 'bottom)
+    )
+
+  (use-package lsp-treemacs
+    :config
+    (global-set-key (kbd "C-c i") 'lsp-treemacs-symbols))
 #+END_SRC
 ** htmlize
 #+BEGIN_SRC emacs-lisp
