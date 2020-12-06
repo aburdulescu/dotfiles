@@ -162,7 +162,8 @@ exec --no-startup-id nm-applet
 # screen lock
 bindsym $mod+b exec i3lock-fancy -gp -- scrot
 
-# pavucontrol(volume control)
-bindsym $mod+p exec pavucontrol
+bindsym $mod+plus exec amixer -q set 'Master' 5%+
+bindsym $mod+minus exec amixer -q set 'Master' 5%-
+bindsym $mod+m exec amixer -q set 'Master' toggle
 
 workspace_layout tabbed
