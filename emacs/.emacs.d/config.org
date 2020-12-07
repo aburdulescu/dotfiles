@@ -367,9 +367,6 @@
   (use-package lsp-ui
     :init
     (add-hook 'c++-mode-hook 'lsp-ui-mode)
-    (setq lsp-ui-sideline-enable t)
-    (setq lsp-ui-sideline-show-hover nil)
-    (setq lsp-ui-doc-position 'bottom)
     )
 
   (use-package lsp-treemacs
