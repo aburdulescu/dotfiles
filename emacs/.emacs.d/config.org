@@ -62,9 +62,9 @@
 
 ** add custom ido-goto-symbol
 #+BEGIN_SRC emacs-lisp
-;(add-to-list 'load-path "~/.emacs.d/elisp")
-;(require 'ido-goto-symbol)
-;(global-set-key (kbd "C-c i") 'ido-goto-symbol)
+(add-to-list 'load-path "~/.emacs.d/elisp")
+(require 'ido-goto-symbol)
+(global-set-key (kbd "C-c i") 'ido-goto-symbol)
 #+END_SRC
 
 ** disable tool-bar
@@ -197,7 +197,7 @@
 ** additional modes
 #+BEGIN_SRC emacs-lisp
 (use-package dockerfile-mode)
-(use-package cmake-mode)
+;(use-package cmake-mode)
 (use-package markdown-mode)
 (use-package json-mode)
 (use-package protobuf-mode)
@@ -362,7 +362,7 @@
     (lsp-enable-which-key-integration t)
     (add-hook 'c-mode-hook#'lsp)
     (add-hook 'c++-mode-hook#'lsp)
-    (setq lsp-clients-clangd-args '("-j=1" "--background-index" "--log=verbose" "--clang-tidy" "--header-insertion=never" "--fallback-style=google" "--suggest-missing-includes" "--pch-storage=memory" "--pretty"))
+    (setq lsp-clients-clangd-args '("-j=1" "--background-index" "--log=verbose" "--clang-tidy" "--header-insertion=never" "--fallback-style=google" "--suggest-missing-includes" "--pch-storage=memory"))
     )
 
   (use-package lsp-ui
@@ -370,9 +370,9 @@
     (add-hook 'c++-mode-hook 'lsp-ui-mode)
     )
 
-  (use-package lsp-treemacs
-    :config
-    (global-set-key (kbd "C-c i") 'lsp-treemacs-symbols))
+  ;; (use-package lsp-treemacs
+  ;;   :config
+  ;;   (global-set-key (kbd "C-c i") 'lsp-treemacs-symbols))
 #+END_SRC
 ** htmlize
 #+BEGIN_SRC emacs-lisp
