@@ -27,7 +27,8 @@ install_misc()
         dnsutils \
         linux-perf \
         mpv \
-        youtube-dl
+        youtube-dl \
+        ibus # for selecting input method
 }
 
 install_mpd() {
