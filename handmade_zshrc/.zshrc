@@ -2,6 +2,9 @@
 alias ls='ls --color=auto'
 alias ll='ls -lah --color=auto'
 alias grep='grep --color=auto'
+alias em='emacsclient -t '
+alias emg='emacsclient -c '
+alias time='/usr/bin/time'
 
 # prompt
 PROMPT='%F{magenta}%n%f%F{red}@%f%F{cyan}%M%f:%F{green}%~%f%# '
