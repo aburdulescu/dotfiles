@@ -378,3 +378,13 @@
 #+BEGIN_SRC emacs-lisp
   (use-package htmlize)
 #+END_SRC
+** plantuml
+#+BEGIN_SRC emacs-lisp
+  (use-package plantuml-mode)
+
+  (org-babel-do-load-languages 'org-babel-load-languages '((plantuml . t)))
+
+  (setq org-plantuml-jar-path (expand-file-name "/usr/share/plantuml/plantuml.jar"))
+
+  (setq plantuml-default-exec-mode 'executable)
+#+END_SRC
