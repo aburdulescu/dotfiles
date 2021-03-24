@@ -189,7 +189,7 @@ usage()
     echo -e "\tc - Go"
     echo -e "\td - Git"
     echo -e "\te - Miscellaneous"
-    echo -e "\tf - Oh-my-zsh"
+    echo -e "\tf - zsh"
     echo -e "\tg - Python"
     echo -e "\ti - Tmux"
     echo -e "\tj - UI"
@@ -220,7 +220,7 @@ main()
             c) INSTALL_GO=1 ;;
             d) INSTALL_GIT=1 ;;
             e) INSTALL_MISC=1 ;;
-            f) INSTALL_OHMYZSH=1 ;;
+            f) INSTALL_ZSH=1 ;;
             g) INSTALL_PYTHON=1 ;;
             i) INSTALL_TMUX=1 ;;
             j) INSTALL_UI=1 ;;
@@ -254,9 +254,9 @@ main()
     then
         install_misc
     fi
-    if [[ $INSTALL_OHMYZSH == 1 ]]
+    if [[ $INSTALL_ZSH == 1 ]]
     then
-        install_ohmyzsh
+        install_zsh
     fi
     if [[ $INSTALL_PYTHON == 1 ]]
     then
