@@ -117,18 +117,12 @@ install_emacs()
     systemctl --user start emacs.service
 }
 
-install_ohmyzsh()
+install_zsh()
 {
     sudo apt update && sudo apt install -y zsh
-    rm -rf ~/.oh-my-zsh ~/.zshrc
-    rm -rf /tmp/ohmyzsh/ && mkdir -p /tmp/ohmyzsh/ && cd /tmp/ohmyzsh
-    wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
-    chmod +x install.sh
-    RUNZSH=no ./install.sh
-    cd -
-    mv ~/.zshrc ~/.zshrc.default
+    rm -rf ~/.zshrc
     stow zsh
-    stow -t ~/.oh-my-zsh/custom/plugins/ zsh_plugins/
+    sudo chsh aburdulescu --shell=/bin/zsh
     echo "Reboot needed!"
 }
 
