@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e # stop on error
+
 APT_PACKAGES="
     stow
     vim
@@ -48,7 +50,7 @@ CUSTOM_PACKAGES="
     emacs
     docker
     golang
-    ohmyzsh
+    zsh
 "
 
 usage()
@@ -56,7 +58,7 @@ usage()
     echo "Usage: dotf COMMAND PACKAGE0 ... PACKAGEn"
     echo "COMMANDS:"
     echo -e "\thelp\t\tprint this message"
-    echo -e "\thelp\t\tinstall something"
+    echo -e "\tinstall\t\tinstall something"
     echo -e "\tupdate\t\tupdate something"
     echo "PACKAGES:"
     echo -e "\tall\t\tall packages"
@@ -67,8 +69,8 @@ usage()
 }
 
 error() {
-    echo "error:" $1; echo ""
-    usage
+    printf "error: %s\n" "$1"
+    printf "run '$0 help' to see usage info\n"
     exit 1
 }
 
@@ -146,8 +148,6 @@ validate_package_names() {
 }
 
 main() {
-    set -e # stop on error
-
     if [[ $# -lt 1 ]]
     then
         error "need the command"
@@ -165,7 +165,10 @@ main() {
             validate_package_names $@
             handle_update $@
             ;;
-        "help"|*)
+        "help")
+            usage
+            ;;
+        *)
             error "unknown command '$command'"
             ;;
     esac
