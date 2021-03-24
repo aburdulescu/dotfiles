@@ -21,7 +21,6 @@ install_misc()
         ltrace \
         dwarves \
         time \
-        firefox-esr \
         chromium \
         p7zip-full \
         dnsutils \
@@ -177,6 +176,17 @@ install_testing()
     sudo apt update && sudo apt dist-upgrade
 }
 
+install_brave() {
+    sudo apt update
+    sudo apt install -y apt-transport-https curl gnupg
+
+    curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
+
+    echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+
+    sudo apt install -y brave-browser
+}
+
 # TODO: install ssg5 static site generator + lowdown
 
 usage()
@@ -199,6 +209,7 @@ usage()
     echo -e "\tn - go tools"
     echo -e "\to - st"
     echo -e "\tp - mpd"
+    echo -e "\tq - brave"
 }
 
 main()
@@ -211,7 +222,7 @@ main()
         exit 1
     fi
 
-    while getopts 'habcdefgijklmnop' c
+    while getopts 'habcdefgijklmnopq' c
 
     do
         case $c in
@@ -230,6 +241,7 @@ main()
             n) INSTALL_GO_TOOLS=1 ;;
             o) INSTALL_ST=1 ;;
             p) INSTALL_MPD=1 ;;
+            p) INSTALL_BRAVE=1 ;;
             h|*) usage ;;
         esac
     done
@@ -293,6 +305,10 @@ main()
     if [[ $INSTALL_MPD == 1 ]]
     then
         install_mpd
+    fi
+    if [[ $INSTALL_BRAVE == 1 ]]
+    then
+        install_brave
     fi
 }
 
