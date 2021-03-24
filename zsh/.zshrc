@@ -6,6 +6,8 @@ alias grep='grep --color=auto'
 alias em='emacsclient -t '
 alias emg='emacsclient -c '
 alias time='/usr/bin/time'
+alias poweroff='systemctl poweroff'
+alias reboot='systemctl reboot'
 
 # prompt
 PROMPT='%F{red}%#%f '
