@@ -27,6 +27,7 @@ install_misc()
         linux-perf \
         mpv \
         youtube-dl \
+	syncthing \
         ibus # for selecting input method
 }
 
@@ -184,6 +185,7 @@ install_brave() {
 
     echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
 
+    sudo apt update
     sudo apt install -y brave-browser
 }
 
@@ -241,7 +243,7 @@ main()
             n) INSTALL_GO_TOOLS=1 ;;
             o) INSTALL_ST=1 ;;
             p) INSTALL_MPD=1 ;;
-            p) INSTALL_BRAVE=1 ;;
+            q) INSTALL_BRAVE=1 ;;
             h|*) usage ;;
         esac
     done
