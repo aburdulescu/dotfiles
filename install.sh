@@ -27,7 +27,8 @@ install_misc()
         linux-perf \
         mpv \
         youtube-dl \
-	syncthing \
+        syncthing \
+        fzf \
         ibus # for selecting input method
 }
 
