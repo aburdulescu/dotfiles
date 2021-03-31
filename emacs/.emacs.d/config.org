@@ -389,3 +389,7 @@
 
   (setq plantuml-default-exec-mode 'executable)
 #+END_SRC
+** fzf
+#+BEGIN_SRC emacs-lisp
+  (use-package fzf)
+#+END_SRC

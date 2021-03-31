@@ -29,6 +29,7 @@ install_misc()
         youtube-dl \
         firefox-esr \
         syncthing \
+        fzf \
         ibus # for selecting input method
 }
 

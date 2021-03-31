@@ -8,6 +8,7 @@ alias emg='emacsclient -c '
 alias time='/usr/bin/time'
 alias poweroff='systemctl poweroff'
 alias reboot='systemctl reboot'
+alias screencast='~/.files/scripts/screencast.sh'
 
 # prompt
 PROMPT='%F{red}%#%f '
