@@ -9,6 +9,7 @@ alias time='/usr/bin/time'
 alias poweroff='systemctl poweroff'
 alias reboot='systemctl reboot'
 alias screencast='~/.files/scripts/screencast.sh'
+alias mg='mg -n'
 
 # prompt
 PROMPT='%F{red}%#%f '

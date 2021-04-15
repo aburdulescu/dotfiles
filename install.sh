@@ -31,6 +31,7 @@ install_misc()
         syncthing \
         fzf \
         docker.io \
+        mg \
         ibus # for selecting input method
 }
 

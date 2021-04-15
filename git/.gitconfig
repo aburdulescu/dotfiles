@@ -1,18 +1,15 @@
 [user]
 	email = andrei.burdulescu@pm.me
 	name = aburdulescu
-[alias]
-	st = status
-	ci = commit
-	df = diff
-	pl = pull
-	ph = push
-	co = checkout
+
 [credential]
 	helper = store
+
 [core]
-	editor = vim
+	editor = mg -n
+
 [pull]
 	rebase = false
+
 [init]
 	defaultBranch = main
