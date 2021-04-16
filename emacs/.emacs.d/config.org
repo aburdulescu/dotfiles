@@ -303,21 +303,12 @@
     (defun my-go-mode-hook ()
       (setq gofmt-command "goimports")
       (add-hook 'before-save-hook 'gofmt-before-save)
-      (local-set-key (kbd "M-.") 'godef-jump)
-      (local-set-key (kbd "M-*") 'pop-tag-mark)
       (if (not (string-match "go" compile-command))
           (set (make-local-variable 'compile-command)
                "go build -v && go test -v && go vet"))
-      (add-hook 'go-mode-hook #'go-guru-hl-identifier-mode)
       )
 
     (add-hook 'go-mode-hook 'my-go-mode-hook))
-
-  (use-package go-autocomplete)
-  (use-package go-guru
-    :init
-    (go-guru-hl-identifier-mode)
-    )
 #+END_SRC
 ** clang-format
 #+BEGIN_SRC emacs-lisp
