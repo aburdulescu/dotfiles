@@ -138,7 +138,7 @@ install_go()
 
 install_go_tools()
 {
-    go get golang.org/x/tools/cmd/benchcmp
+    go get golang.org/x/perf/cmd/benchstat
     go get golang.org/x/tools/cmd/goimports
 }
 
