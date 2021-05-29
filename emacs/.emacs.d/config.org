@@ -73,55 +73,63 @@
  (menu-bar-mode -1)
  (scroll-bar-mode -1)
 #+END_SRC
+
 ** empty scratch buffer
 #+BEGIN_SRC emacs-lisp
   (setq initial-scratch-message nil)
 #+END_SRC
+
 ** bind ibuffer to C-x C-b
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "C-x C-b") 'ibuffer)
 #+END_SRC
+
 ** revert buffer
 #+BEGIN_SRC emacs-lisp
   (define-key global-map (kbd "C-c C-r") 'revert-buffer)
 #+END_SRC
+
 ** rgrep
 #+BEGIN_SRC emacs-lisp
   (define-key global-map (kbd "C-c g") 'rgrep)
 #+END_SRC
+
 ** disable the bell
 #+BEGIN_SRC emacs-lisp
   (setq visible-bell 1)
 #+END_SRC
+
 ** highlight current line
 #+BEGIN_SRC emacs-lisp
   (when window-system
     (global-hl-line-mode))
 #+END_SRC
+
 ** add new line at the end of file
 #+BEGIN_SRC emacs-lisp
   (setq require-final-newline t)
 #+END_SRC
+
 ** Delete trailing white spaces on save
 #+BEGIN_SRC emacs-lisp
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
 #+END_SRC
+
 ** electric pair(add matching delimiter; i.e. open a '(' and this will open a matching ')')
 #+BEGIN_SRC emacs-lisp
   (electric-pair-mode 1)
 #+END_SRC
-** icomplete
-#+BEGIN_SRC emacs-lisp
-  ;(icomplete-mode 1)
-#+END_SRC
+
 ** gdb
 #+BEGIN_SRC emacs-lisp
   (setq gdb-many-windows t gdb-show-main t)
 #+END_SRC
+
 ** line numbers
 #+BEGIN_SRC emacs-lisp
   (global-display-line-numbers-mode)
 #+END_SRC
+
 ** dired
 #+BEGIN_SRC emacs-lisp
   (setq dired-dwim-target t)
@@ -157,14 +165,6 @@
   (use-package gnu-elpa-keyring-update)
 #+END_SRC
 
-** auto-complete
-#+BEGIN_SRC emacs-lisp
-  ;(use-package auto-complete
-  ;      :init
-  ;      (ac-config-default)
-  ;      (global-auto-complete-mode t))
-#+END_SRC
-
 ** flycheck
 #+BEGIN_SRC emacs-lisp
   (use-package flycheck
@@ -184,13 +184,6 @@
 (use-package magit
   :bind
   ("C-x g" . magit-status))
-#+END_SRC
-
-** org-bullets
-#+BEGIN_SRC emacs-lisp
-;(use-package org-bullets
-;  :init
-;  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 #+END_SRC
 
 ** ido
@@ -213,12 +206,6 @@
   (use-package docker-compose-mode)
 #+END_SRC
 
-** elpy
-#+BEGIN_SRC emacs-lisp
-  ;; (use-package elpy
-  ;;    :init
-  ;;    (elpy-enable))
-#+END_SRC
 ** smex
 #+BEGIN_SRC emacs-lisp
   (use-package smex
@@ -227,49 +214,19 @@
     :bind
     ("M-x" . smex))
 #+END_SRC
+
 ** auto-package-update
 #+BEGIN_SRC emacs-lisp
   (use-package auto-package-update
     :init
     (auto-package-update-maybe))
 #+END_SRC
+
 ** ag
 #+BEGIN_SRC emacs-lisp
   (use-package ag)
 #+END_SRC
-** projectile
-#+BEGIN_SRC emacs-lisp
-  ;; (use-package projectile
-  ;;   :config
-  ;;   (projectile-mode +1)
-  ;;   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-  ;;   (setq projectile-indexing-method 'native))
-#+END_SRC
-** enable paradox
-#+BEGIN_SRC emacs-lisp
-;  (use-package paradox
-;    :config
-;    (paradox-enable))
-#+END_SRC
-** avy
-#+BEGIN_SRC emacs-lisp
-  ;(use-package avy
-  ;  :bind (("C-c SPC" . avy-goto-char-2)
-  ;         ("M-g f" . avy-goto-line)
-  ;         ("M-g w" . avy-goto-word-1)))
-#+END_SRC
-** ibuffer extra packages
-#+BEGIN_SRC emacs-lisp
-  ;; (use-package ibuffer-vc)
-  ;; (use-package ibuffer-git)
-#+END_SRC
-** whole line or region -> gives ERROR!!!
-#+BEGIN_SRC emacs-lisp
-  ;; (use-package whole-line-or-region
-  ;;   :config
-  ;;   (transient-mark-mode t)
-  ;;   (whole-line-or-region-global-mode t))
-#+END_SRC
+
 ** company
 #+BEGIN_SRC emacs-lisp
   (use-package company
@@ -279,17 +236,12 @@
           company-idle-delay 0.0)
     )
 #+END_SRC
-** dumb-jump
-#+BEGIN_SRC emacs-lisp
-  (use-package dumb-jump
-    :config
-    (dumb-jump-mode)
-    (setq dumb-jump-aggressive nil))
-#+END_SRC
+
 ** web-mode
 #+BEGIN_SRC emacs-lisp
   (use-package web-mode)
 #+END_SRC
+
 ** go
 #+BEGIN_SRC emacs-lisp
   (use-package go-mode
@@ -310,35 +262,17 @@
     (defun my-go-mode-hook ()
       (setq gofmt-command "goimports")
       (add-hook 'before-save-hook 'gofmt-before-save)
-      (if (not (string-match "go" compile-command))
-          (set (make-local-variable 'compile-command)
-               "go build -v && go test -v && go vet"))
       )
 
-    (add-hook 'go-mode-hook 'my-go-mode-hook))
+    (add-hook 'go-mode-hook 'my-go-mode-hook)
+    )
 #+END_SRC
+
 ** clang-format
 #+BEGIN_SRC emacs-lisp
   (use-package clang-format)
 #+END_SRC
-** rtags
-#+BEGIN_SRC emacs-lisp
-  ;; (use-package rtags
-  ;;   :init
-  ;;   (defun my-rtags-hook ()
-  ;;     (local-set-key (kbd "C-c r j") 'rtags-find-symbol-at-point)
-  ;;     (local-set-key (kbd "C-c r r") 'rtags-find-references-at-point)
-  ;;     (local-set-key (kbd "C-c r l b") 'rtags-location-stack-back)
-  ;;     (local-set-key (kbd "C-c r l f") 'rtags-location-stack-forward)
-  ;;     (local-set-key (kbd "C-c r l r") 'rtags-location-stack-reset)
-  ;;     (local-set-key (kbd "C-c r l v") 'rtags-location-stack-visualize)
-  ;;     )
 
-  ;;   (add-hook 'c++-mode-hook 'my-rtags-hook)
-  ;;   (add-hook 'c-mode-hook 'my-rtags-hook)
-  ;;   (add-hook 'c++-mode-hook 'rtags-start-process-unless-running)
-  ;;   (add-hook 'c-mode-hook 'rtags-start-process-unless-running))
-#+END_SRC
 ** dracula-theme
 #+BEGIN_SRC emacs-lisp
   (use-package dracula-theme)
@@ -369,14 +303,13 @@
     (add-hook 'c++-mode-hook 'lsp-ui-mode)
     )
 
-  ;; (use-package lsp-treemacs
-  ;;   :config
-  ;;   (global-set-key (kbd "C-c i") 'lsp-treemacs-symbols))
 #+END_SRC
+
 ** htmlize
 #+BEGIN_SRC emacs-lisp
   (use-package htmlize)
 #+END_SRC
+
 ** plantuml
 #+BEGIN_SRC emacs-lisp
   (use-package plantuml-mode)
@@ -387,10 +320,12 @@
 
   (setq plantuml-default-exec-mode 'executable)
 #+END_SRC
+
 ** fzf
 #+BEGIN_SRC emacs-lisp
   (use-package fzf)
 #+END_SRC
+
 ** restclient-mode
 #+BEGIN_SRC emacs-lisp
   (use-package restclient)
