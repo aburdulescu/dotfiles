@@ -21,16 +21,11 @@ install_misc()
         ltrace \
         dwarves \
         time \
-        chromium \
-        p7zip-full \
         dnsutils \
-        linux-perf \
         mpv \
         youtube-dl \
-        firefox-esr \
         syncthing \
         fzf \
-        docker.io \
         mg \
         ibus # for selecting input method
 }
@@ -78,7 +73,8 @@ install_ctools()
         clang-tidy \
         clang-tools \
         clangd \
-        valgrind
+        valgrind \
+        ccache
 }
 
 install_ui()
@@ -117,8 +113,6 @@ install_emacs()
     sudo apt update && sudo apt install -y emacs
     rm -rf ~/.emacs.d
     stow emacs
-    systemctl --user enable emacs.service
-    systemctl --user start emacs.service
 }
 
 install_zsh()
@@ -132,7 +126,9 @@ install_zsh()
 
 install_go()
 {
-    sudo apt update && sudo apt install -y golang
+    cd /tmp
+    wget https://golang.org/dl/go1.16.6.linux-amd64.tar.gz
+    sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.16.6.linux-amd64.tar.gz
     install_go_tools
 }
 
@@ -144,20 +140,9 @@ install_go_tools()
 
 install_docker()
 {
-    echo "Following steps from https://docs.docker.com/engine/install/debian/"
     sudo apt-get update
-    sudo apt-get install -y \
-         apt-transport-https \
-         ca-certificates \
-         curl \
-         gnupg2
-    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-    echo \
-        "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-    sudo apt-get update
-    sudo apt-get install -y docker-ce docker-ce-cli containerd.io
-    sudo docker run hello-world
+    sudo apt-get install -y docker.io
+    sudo usermod -aG docker aburdulescu
 }
 
 install_vagrant()
@@ -173,20 +158,6 @@ install_testing()
     sudo sed -i 's/'$current'/testing/g' sources.list
     sudo apt update && sudo apt dist-upgrade
 }
-
-install_brave() {
-    sudo apt update
-    sudo apt install -y apt-transport-https curl gnupg
-
-    curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
-
-    echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-
-    sudo apt update
-    sudo apt install -y brave-browser
-}
-
-# TODO: install ssg5 static site generator + lowdown
 
 usage()
 {
@@ -208,7 +179,6 @@ usage()
     echo -e "\tn - go tools"
     echo -e "\to - st"
     echo -e "\tp - mpd"
-    echo -e "\tq - brave"
 }
 
 main()
@@ -221,7 +191,7 @@ main()
         exit 1
     fi
 
-    while getopts 'habcdefgijklmnopq' c
+    while getopts 'habcdefgijklmnop' c
 
     do
         case $c in
@@ -240,7 +210,6 @@ main()
             n) INSTALL_GO_TOOLS=1 ;;
             o) INSTALL_ST=1 ;;
             p) INSTALL_MPD=1 ;;
-            q) INSTALL_BRAVE=1 ;;
             h|*) usage ;;
         esac
     done
@@ -305,10 +274,7 @@ main()
     then
         install_mpd
     fi
-    if [[ $INSTALL_BRAVE == 1 ]]
-    then
-        install_brave
-    fi
 }
 
 main $@
+
